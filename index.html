@@ -79,16 +79,16 @@
 
 
 
-<meta name="description" content="这是傅宇敏的个人博客">
+<meta name="description" content="不积跬步无以至千里">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Rainy&#39;s Blog">
 <meta property="og:url" content="http://yoursite.com/index.html">
 <meta property="og:site_name" content="Rainy&#39;s Blog">
-<meta property="og:description" content="这是傅宇敏的个人博客">
+<meta property="og:description" content="不积跬步无以至千里">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Rainy&#39;s Blog">
-<meta name="twitter:description" content="这是傅宇敏的个人博客">
+<meta name="twitter:description" content="不积跬步无以至千里">
 
 
 
@@ -218,6 +218,312 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/08/sort/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Rainy">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rainy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/08/sort/" itemprop="url">JavaScript版各大排序算法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-08T00:00:00+08:00">
+                2020-01-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="排序算法的设计与实现"><a href="#排序算法的设计与实现" class="headerlink" title="排序算法的设计与实现"></a>排序算法的设计与实现</h1><p>这是一个<a href="https://songjinzhong.github.io/BaiDu_IFE/stage2/task19/" target="_blank" rel="noopener">可视化的排序展示</a>,支持冒泡、插入和选择排序，具体使用先 随机添加40个，然后点排序，就可以看到可视化的效果。<br>推荐一下，<a href="http://math.hws.edu/eck/jsdemo/sortlab.html" target="_blank" rel="noopener">HTML5 Canvas Demo:Sorting Algorithms</a>,这里还有个可视化的<a href="https://coolshell.cn/articles/3933.html" target="_blank" rel="noopener">排序博客</a>，各大排序算法的实现都栩栩如生。</p>
+<p>JavaScript写排序算法主要是参数问题，比如JavaScript算法函数可以扔给Array原型：<code>Array.prototype.sort = function</code>，也可以直接写个函数带参数：<code>function sort(array) {}</code>，哪种方法都一样，需要注意的是兼容性问题，如果可以考虑所有可遍历对象都能排序（比如argument），才大法好！<br>下面的排序都是从小到大的排序：</p>
+<h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><p>插入排序是一种基本排序，它的基本思路是构建有序序列，对于未排序的数据，在已排序的基础上，从右向左（或者二分查找）选择位置插入。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">insert_sort</span>(<span class="params">input</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> i, j, temp;</span><br><span class="line">  <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; input.length; i++)&#123;</span><br><span class="line">    temp = input[i];</span><br><span class="line">    <span class="keyword">for</span>(j = i<span class="number">-1</span>; j &gt;= <span class="number">0</span> &amp;&amp; input[j] &gt; temp; j--) &#123;</span><br><span class="line">      input[j+<span class="number">1</span>] = input[j];</span><br><span class="line">    &#125;</span><br><span class="line">    input[j+<span class="number">1</span>] = temp;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> input;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果以比较次数和移动次数来衡量算法的效率，最好的情况下，比较n-1次，移动0次，最坏情况，比较n<em>(n-1)/2次，移动n</em>(n-1)/2次。</p>
+<h2 id="二分插入排序"><a href="#二分插入排序" class="headerlink" title="二分插入排序"></a>二分插入排序</h2><p>思路基本与插入算法相同，只是在查找插入位置的时候，不是依次查找，而是采用二分法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bin_insert_sort</span>(<span class="params">input</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> i, j, low, mid, high, temp;</span><br><span class="line">  <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; input.length; i++) &#123;</span><br><span class="line">    temp = input[i];</span><br><span class="line">    high = i - <span class="number">1</span>;</span><br><span class="line">    low = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(low &lt;= high) &#123;</span><br><span class="line">      min = <span class="built_in">parseInt</span>((low + high)/<span class="number">2</span>);</span><br><span class="line">      <span class="keyword">if</span>(temp &lt; input[mid]) &#123;</span><br><span class="line">        high = mid - <span class="number">1</span>;</span><br><span class="line">      &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        low = mid + <span class="number">1</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// low的位置就是要插入的位置</span></span><br><span class="line">    <span class="keyword">for</span>(j = i - <span class="number">1</span>; j &gt;= low; j--) &#123;</span><br><span class="line">      input[j+<span class="number">1</span>] = input[j]</span><br><span class="line">    &#125;</span><br><span class="line">    input[low] = temp;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> input;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h2><p>希尔排序其实是加强版的插入排序，就是在原先的插入排序的基础上，加入了步长，原先插入排序的步长是1，而且步长不同，效率也有差异，选择一个合适的步长也很重要。而且，希尔排序的最后一步，也必定是步长为1的插入排序，只不过此时整个排序已经基本稳定。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shell_sort</span>(<span class="params">input</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> gap, i, j, temp;</span><br><span class="line">  gap = input.length &gt;&gt; <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span>(gap &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">for</span>(i = gap; i &lt; input.length; i++) &#123;</span><br><span class="line">      temp = input[i];</span><br><span class="line">      <span class="keyword">for</span>(j = i - gap;j &gt;= <span class="number">0</span> &amp;&amp; input[j] &gt; temp; j -= gap) &#123;</span><br><span class="line">        input[j + gap] = input[j];</span><br><span class="line">      &#125;</span><br><span class="line">      input[j + gap] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">    gap = gap &gt;&gt; <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> input;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><p>选择排序的工作原理：首先在未排序序列中找到最小（大）元素，存放在排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">select_sort</span>(<span class="params">input</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> i, j, min, temp;</span><br><span class="line">  <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; input.length - <span class="number">1</span>; i++) &#123;</span><br><span class="line">    min = i;</span><br><span class="line">    <span class="keyword">for</span>(j = i + <span class="number">1</span>; j &lt; input.length; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span>(input[min] &gt; input[j]) &#123;</span><br><span class="line">        min = j;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    temp = input[min];</span><br><span class="line">    input[min] = input[i];</span><br><span class="line">    input[i] = temp;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> input;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>选择排序在最好的情况下和最坏的情况下，比较次数是一样的，都是n*(n-1)/2;</p>
+<h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><p>冒泡排序的原理：对于待排序列，它会遍历多次，每次都会比较相邻的两个元素，若顺序相反，即交换他们。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bubble_sort</span>(<span class="params">input</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> i, j, temp, flag;</span><br><span class="line">  <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; input.length - <span class="number">1</span>; i++) &#123;</span><br><span class="line">    flag = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">for</span>(j = <span class="number">0</span>; j &lt; input.length - i; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (input[j] &gt; input[j + <span class="number">1</span>]) &#123;</span><br><span class="line">        temp = input[j];</span><br><span class="line">        input[j] = input[j + <span class="number">1</span>];</span><br><span class="line">        input[j + <span class="number">1</span>] = temp;</span><br><span class="line">        flag = <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (flag) &#123;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> input;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>有flag时，最好的情况比较n-1次，移动0次，最坏情况，比较n<em>(n-1)/2次，交换n</em>(n-1)/2</p>
+<h2 id="快排"><a href="#快排" class="headerlink" title="快排"></a>快排</h2><p>快排的基本思路就是选择一个元素，然后按照与这个元素的比较，将大于这个元素的都拿到右边，小于这个元素的都拿到左边，并找到这个元素的位置这个元素的左右两边递归。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">quick_sort</span> (<span class="params">input</span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">sort</span>(<span class="params">start, end</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (start &gt;= end) &#123;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> mid = partition(start, end);</span><br><span class="line">    sort(start, mid - <span class="number">1</span>);</span><br><span class="line">    sort(min + <span class="number">1</span>, end);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">partition</span>(<span class="params">start, end</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> left = start, right = end, key = input[start], temp;</span><br><span class="line">    <span class="keyword">while</span>(left &lt; right) &#123;</span><br><span class="line">      <span class="keyword">while</span>(left &lt; right &amp;&amp; input[right] &gt;= key) &#123;</span><br><span class="line">        right--;</span><br><span class="line">      &#125;</span><br><span class="line">      input[left] = input[right];</span><br><span class="line">      <span class="keyword">while</span>(left &lt; right &amp;&amp; input[left] &lt;= key)&#123;</span><br><span class="line">        left++</span><br><span class="line">      &#125;</span><br><span class="line">      input[right] = input[left];</span><br><span class="line">    &#125;</span><br><span class="line">    input[left] = key;</span><br><span class="line">    <span class="keyword">return</span> left;</span><br><span class="line">  &#125;</span><br><span class="line">  sort(<span class="number">0</span>, input.length - <span class="number">1</span>);</span><br><span class="line">  <span class="keyword">return</span> input;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a href="http://www.ruanyifeng.com/blog/2011/04/quicksort_in_javascript.html" target="_blank" rel="noopener">关于快排的详解</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/02/year2019/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Rainy">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rainy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/02/year2019/" itemprop="url">2019年总结回顾</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-02T00:00:00+08:00">
+                2020-01-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="jQuery总体架构"><a href="#jQuery总体架构" class="headerlink" title="jQuery总体架构"></a>jQuery总体架构</h2><p>jQuery使用上的几大特点</p>
+<ol>
+<li><code>$(&#39;#id&#39;)</code>函数方式直接生成jQuery对象</li>
+<li><code>$(&#39;#id&#39;).css().html().hide()</code>链式调用</li>
+</ol>
+<p>关于链式调用，既在函数结尾<code>return this</code>;</p>
+<h3 id="无new函数的实现"><a href="#无new函数的实现" class="headerlink" title="无new函数的实现"></a>无new函数的实现</h3><p>下面是一个普通的函数，很显然，会陷入死循环；</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> jQuery = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> jQuery();</span><br><span class="line">&#125;</span><br><span class="line">jQuery.prototype = &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>jQuery</code>用一个<code>init</code>函数来代替直接<code>new</code>函数名的方式，还要考虑到<code>jQuery</code>中分离作用域：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> jQuery = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> jQuery.prototype.init();</span><br><span class="line">&#125;</span><br><span class="line">jQuery.prototype = &#123;</span><br><span class="line">  <span class="keyword">constructor</span>: jQuery,</span><br><span class="line">  init: function () &#123;</span><br><span class="line">    <span class="keyword">this</span>.jquery = <span class="number">1.0</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">  jquery: <span class="number">2.0</span>,</span><br><span class="line">  each: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'each'</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">jQuery().jquery <span class="comment">//1.0</span></span><br><span class="line">jQuery.prototype.jquery <span class="comment">//2.0</span></span><br><span class="line">jQuery().each <span class="comment">//error</span></span><br></pre></td></tr></table></figure>
+
+<p>上面的代码看似运行正常，但是问题出在<code>jQuery().each //error</code>，访问不到<code>each</code>函数上。实际上，<code>new jQuery.prototype.init()</code>返回的是<code>init</code>这个函数的实例，所以<code>init</code>函数中的<code>this</code>就没有意义！如果：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> jq = jQuery();</span><br><span class="line">jq.__proto__ === jQuery.prototype;</span><br><span class="line">jq.each === jQuery.prototype.each;</span><br></pre></td></tr></table></figure>
+
+<p>如果实现上面的proto的指向问题，原型函数调用问题就解决了，<code>但实际上：</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> jq = jQuery();</span><br><span class="line">jq.__proto__ ===jQuery.prototype.init.prototype; <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+
+<p>实际上，jq的proto是指向init函数原型的，所以，我们可以把<code>jQuery.prototype.init.prototype = jQuery.prototype</code>，这个时候，函数调用就顺理成章了，而且使用的都是引用，指向的都是同一个<code>prototype</code>对象</p>
+<h3 id="jQuery内部结构图"><a href="#jQuery内部结构图" class="headerlink" title="jQuery内部结构图"></a>jQuery内部结构图</h3><p><code>jQuery.fn</code>,实际上是prototype的一个引用，指向jQuery.prototype;</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> jQuery = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> jQuery.prototype.init();</span><br><span class="line">&#125;</span><br><span class="line">jQuery.fn = jQuery.prototype &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>为什么要用fn指向prototype？一个比较中肯的回答：简洁！你不觉得fn比prototype好写多了么<br>借用网上的一张图：<br><img src="https://user-gold-cdn.xitu.io/2017/2/23/b1c453d8d3b5bddb21cddc15bc1f8af2?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="jQuery内部结构图"><br>从图上可以看出，window对象有两个公共的接口，分别是<code>$</code>和<code>jQuery</code>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.jQuery = <span class="built_in">window</span>.$ = jQuery</span><br></pre></td></tr></table></figure>
+
+<p><code>jQuery.extend</code>方法是一个对象拷贝的方法，包括深拷贝</p>
+<h3 id="链式调用"><a href="#链式调用" class="headerlink" title="链式调用"></a>链式调用</h3><p>实现方式，在没有返回值的原型函数后面添加<code>return this</code>:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> jQuery = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> Jquery.fn.init();</span><br><span class="line">&#125;</span><br><span class="line">jQuery.fn = jQuery.prototype = &#123;</span><br><span class="line">  <span class="keyword">constructor</span>: jQuery,</span><br><span class="line">  init: function () &#123;</span><br><span class="line">    <span class="keyword">this</span>.jQuery = <span class="number">3.0</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">  each: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'each'</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">jQuery.fn.init.prototype = jQuery,fn;</span><br><span class="line">jQuery().each().each();</span><br><span class="line"><span class="comment">// 'each'</span></span><br><span class="line"><span class="comment">// 'each'</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="extend"><a href="#extend" class="headerlink" title="extend"></a>extend</h3><p><code>extend</code>是<code>jQuery</code>的一个重要函数，可以对<code>jQuery</code>本身的属性和方法进行扩张，也可以对原型的属性和方法进行扩展</p>
+<p><code>extend</code>函数的功能：</p>
+<ol>
+<li>如果参数只有一个<code>object</code>,即表示将这个对象扩展到jQuery的命名空间中，也就是所谓的<code>jQuery</code>扩展</li>
+<li>如果函数接受了多个<code>object</code>，则表示一种属性拷贝，将后面多个对象的属性全拷贝到第一个对象上，这其中，还包括深拷贝，即非引用拷贝，第一个参数如果是<code>true</code>，则表示深拷贝。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jQuery.extend(target); <span class="comment">// jQuery的扩展</span></span><br><span class="line">jQuery.extend(target, obj1, obj2,...); <span class="comment">//浅拷贝</span></span><br><span class="line">jQuery.extend(<span class="literal">true</span>, target, obj1, obj2,...) <span class="comment">//深拷贝</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>以下是<code>jQuery 3</code>之后的extend函数源码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">jQuery.extend = jQuery.fn.extend = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> options, name, src, copy, copyIsArray, clone,</span><br><span class="line">		target = <span class="built_in">arguments</span>[ <span class="number">0</span> ] || &#123;&#125;,</span><br><span class="line">		i = <span class="number">1</span>,</span><br><span class="line">		length = <span class="built_in">arguments</span>.length,</span><br><span class="line">		deep = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Handle a deep copy situation</span></span><br><span class="line">	<span class="keyword">if</span> ( <span class="keyword">typeof</span> target === <span class="string">"boolean"</span> ) &#123;</span><br><span class="line">		deep = target;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Skip the boolean and the target</span></span><br><span class="line">		target = <span class="built_in">arguments</span>[ i ] || &#123;&#125;;</span><br><span class="line">		i++;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Handle case when target is a string or something (possible in deep copy)</span></span><br><span class="line">	<span class="keyword">if</span> ( <span class="keyword">typeof</span> target !== <span class="string">"object"</span> &amp;&amp; !isFunction( target ) ) &#123;</span><br><span class="line">		target = &#123;&#125;;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Extend jQuery itself if only one argument is passed</span></span><br><span class="line">	<span class="keyword">if</span> ( i === length ) &#123;</span><br><span class="line">		target = <span class="keyword">this</span>;</span><br><span class="line">		i--;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> ( ; i &lt; length; i++ ) &#123;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Only deal with non-null/undefined values</span></span><br><span class="line">		<span class="keyword">if</span> ( ( options = <span class="built_in">arguments</span>[ i ] ) != <span class="literal">null</span> ) &#123;</span><br><span class="line"></span><br><span class="line">			<span class="comment">// Extend the base object</span></span><br><span class="line">			<span class="keyword">for</span> ( name <span class="keyword">in</span> options ) &#123;</span><br><span class="line">				copy = options[ name ];</span><br><span class="line"></span><br><span class="line">				<span class="comment">// Prevent Object.prototype pollution</span></span><br><span class="line">				<span class="comment">// Prevent never-ending loop</span></span><br><span class="line">				<span class="keyword">if</span> ( name === <span class="string">"__proto__"</span> || target === copy ) &#123;</span><br><span class="line">					<span class="keyword">continue</span>;</span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">				<span class="comment">// Recurse if we're merging plain objects or arrays</span></span><br><span class="line">				<span class="keyword">if</span> ( deep &amp;&amp; copy &amp;&amp; ( jQuery.isPlainObject( copy ) ||</span><br><span class="line">					( copyIsArray = <span class="built_in">Array</span>.isArray( copy ) ) ) ) &#123;</span><br><span class="line">					src = target[ name ];</span><br><span class="line"></span><br><span class="line">					<span class="comment">// Ensure proper type for the source value</span></span><br><span class="line">					<span class="keyword">if</span> ( copyIsArray &amp;&amp; !<span class="built_in">Array</span>.isArray( src ) ) &#123;</span><br><span class="line">						clone = [];</span><br><span class="line">					&#125; <span class="keyword">else</span> <span class="keyword">if</span> ( !copyIsArray &amp;&amp; !jQuery.isPlainObject( src ) ) &#123;</span><br><span class="line">						clone = &#123;&#125;;</span><br><span class="line">					&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">						clone = src;</span><br><span class="line">					&#125;</span><br><span class="line">					copyIsArray = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">					<span class="comment">// Never move original objects, clone them</span></span><br><span class="line">					target[ name ] = jQuery.extend( deep, clone, copy );</span><br><span class="line"></span><br><span class="line">				<span class="comment">// Don't bring in undefined values</span></span><br><span class="line">				&#125; <span class="keyword">else</span> <span class="keyword">if</span> ( copy !== <span class="literal">undefined</span> ) &#123;</span><br><span class="line">					target[ name ] = copy;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Return the modified object</span></span><br><span class="line">	<span class="keyword">return</span> target;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="由extend衍生的函数"><a href="#由extend衍生的函数" class="headerlink" title="由extend衍生的函数"></a>由<code>extend</code>衍生的函数</h3><h4 id="jQuery-isFunction源码"><a href="#jQuery-isFunction源码" class="headerlink" title="jQuery.isFunction源码"></a><code>jQuery.isFunction</code>源码</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jQuery.ifFunction = <span class="function"><span class="keyword">function</span> (<span class="params">obj</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> jQuery.type(obj) === <span class="string">"function"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个是简单，但是这里是为了引出涉及到的另一个<code>jQuery</code>函数<code>jQuery.type</code>，这个函数用于类型判断。</p>
+<p>为什么不用原生js的typeof？因为不好用！</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -653,7 +959,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">Rainy</p>
-              <p class="site-description motion-element" itemprop="description">这是傅宇敏的个人博客</p>
+              <p class="site-description motion-element" itemprop="description">不积跬步无以至千里</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -663,7 +969,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -704,7 +1010,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
