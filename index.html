@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -96,7 +96,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Gemini',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -468,7 +468,9 @@
 <h3 id="jQuery内部结构图"><a href="#jQuery内部结构图" class="headerlink" title="jQuery内部结构图"></a>jQuery内部结构图</h3><p><code>jQuery.fn</code>,实际上是prototype的一个引用，指向jQuery.prototype;</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> jQuery = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> jQuery.prototype.init();</span><br><span class="line">&#125;</span><br><span class="line">jQuery.fn = jQuery.prototype &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>为什么要用fn指向prototype？一个比较中肯的回答：简洁！你不觉得fn比prototype好写多了么<br>借用网上的一张图：<br><img src="https://user-gold-cdn.xitu.io/2017/2/23/b1c453d8d3b5bddb21cddc15bc1f8af2?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="jQuery内部结构图"><br>从图上可以看出，window对象有两个公共的接口，分别是<code>$</code>和<code>jQuery</code>：</p>
+<p>为什么要用fn指向prototype？一个比较中肯的回答：简洁！你不觉得fn比prototype好写多了么<br>借用网上的一张图：</p>
+<!-- ![jQuery内部结构图](https://user-gold-cdn.xitu.io/2017/2/23/b1c453d8d3b5bddb21cddc15bc1f8af2?imageView2/0/w/1280/h/960/format/webp/ignore-error/1) -->
+<p>从图上可以看出，window对象有两个公共的接口，分别是<code>$</code>和<code>jQuery</code>：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.jQuery = <span class="built_in">window</span>.$ = jQuery</span><br></pre></td></tr></table></figure>
 
 <p><code>jQuery.extend</code>方法是一个对象拷贝的方法，包括深拷贝</p>
@@ -1028,7 +1030,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 
@@ -1127,6 +1129,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
 
   
 
