@@ -252,6 +252,152 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/13/function/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Rainy">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rainy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/13/function/" itemprop="url">JavaScript 常用方法总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-13T00:00:00+08:00">
+                2019-08-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/常用JS工具代码/" itemprop="url" rel="index">
+                    <span itemprop="name">常用JS工具代码</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="利用a标签自动解析URL分析网址实例"><a href="#利用a标签自动解析URL分析网址实例" class="headerlink" title="利用a标签自动解析URL分析网址实例"></a>利用a标签自动解析URL分析网址实例</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">parseURL</span>(<span class="params">url</span>) </span>&#123;</span><br><span class="line">  <span class="comment">//创建一个a标签</span></span><br><span class="line">  <span class="keyword">var</span> a =  <span class="built_in">document</span>.createElement(<span class="string">'a'</span>);</span><br><span class="line">  <span class="comment">//将url赋值给标签的href属性。</span></span><br><span class="line">  a.href = url;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    source: url,</span><br><span class="line">    protocol: a.protocol.replace(<span class="string">':'</span>,<span class="string">''</span>), <span class="comment">//协议</span></span><br><span class="line">    host: a.hostname,   <span class="comment">//主机名称</span></span><br><span class="line">    port: a.port,   <span class="comment">//端口</span></span><br><span class="line">    query: a.search,  <span class="comment">//查询字符串</span></span><br><span class="line">    params: (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  <span class="comment">//查询参数</span></span><br><span class="line">      <span class="keyword">var</span> ret = &#123;&#125;,</span><br><span class="line">          seg = a.search.replace(<span class="regexp">/^\?/</span>,<span class="string">''</span>).split(<span class="string">'&amp;'</span>),</span><br><span class="line">          len = seg.length, i = <span class="number">0</span>, s;</span><br><span class="line">      <span class="keyword">for</span> (;i&lt;len;i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!seg[i]) &#123; <span class="keyword">continue</span>; &#125;</span><br><span class="line">        s = seg[i].split(<span class="string">'='</span>);</span><br><span class="line">        ret[s[<span class="number">0</span>]] = s[<span class="number">1</span>];</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;)(),</span><br><span class="line">    file: (a.pathname.match(<span class="regexp">/\/([^\/?#]+)$/i</span>) || [,<span class="string">''</span>])[<span class="number">1</span>], <span class="comment">//文件名</span></span><br><span class="line">    hash: a.hash.replace(<span class="string">'#'</span>,<span class="string">''</span>), <span class="comment">//哈希参数</span></span><br><span class="line">    path: a.pathname.replace(<span class="regexp">/^([^\/])/</span>,<span class="string">'/$1'</span>), <span class="comment">//路径</span></span><br><span class="line">    relative: (a.href.match(<span class="regexp">/tps?:\/\/[^\/]+(.+)/</span>) || [,<span class="string">''</span>])[<span class="number">1</span>],  <span class="comment">//相对路径</span></span><br><span class="line">    segments: a.pathname.replace(<span class="regexp">/^\//</span>,<span class="string">''</span>).split(<span class="string">'/'</span>) <span class="comment">//路径片段</span></span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Js获取当前日期时间及其它操作"><a href="#Js获取当前日期时间及其它操作" class="headerlink" title="Js获取当前日期时间及其它操作"></a>Js获取当前日期时间及其它操作</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myDate = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">myDate.getYear();        <span class="comment">//获取当前年份(2位)</span></span><br><span class="line">myDate.getFullYear();    <span class="comment">//获取完整的年份(4位,1970-????)</span></span><br><span class="line">myDate.getMonth();       <span class="comment">//获取当前月份(0-11,0代表1月)</span></span><br><span class="line">myDate.getDate();        <span class="comment">//获取当前日(1-31)</span></span><br><span class="line">myDate.getDay();         <span class="comment">//获取当前星期X(0-6,0代表星期天)</span></span><br><span class="line">myDate.getTime();        <span class="comment">//获取当前时间(从1970.1.1开始的毫秒数)</span></span><br><span class="line">myDate.getHours();       <span class="comment">//获取当前小时数(0-23)</span></span><br><span class="line">myDate.getMinutes();     <span class="comment">//获取当前分钟数(0-59)</span></span><br><span class="line">myDate.getSeconds();     <span class="comment">//获取当前秒数(0-59)</span></span><br><span class="line">myDate.getMilliseconds();    <span class="comment">//获取当前毫秒数(0-999)</span></span><br><span class="line">myDate.toLocaleDateString();     <span class="comment">//获取当前日期</span></span><br><span class="line"><span class="keyword">var</span> mytime=myDate.toLocaleTimeString();     <span class="comment">//获取当前时间</span></span><br><span class="line">myDate.toLocaleString( );        <span class="comment">//获取日期与时间</span></span><br></pre></td></tr></table></figure>
+
+<p><a href="https://www.cnblogs.com/carekee/articles/1678041.html" target="_blank" rel="noopener">链接地址</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/01/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -439,7 +585,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
