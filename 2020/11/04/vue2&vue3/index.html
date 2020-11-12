@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="总结一下vue3.0带来的部分新特性  setup() ref() reactive() isRef() toRefs() computed() watch() LifeCycle Hooks(新的生命周期) Template refs globalProperties Suspense  vue2与vue3的对比 对TypeScript支持不友好（所有属性都放在了this对象上，难以推到组件的数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue3新特性">
+<meta property="og:url" content="http://yoursite.com/2020/11/04/vue2&vue3/index.html">
+<meta property="og:site_name" content="Rainy&#39;s Blog">
+<meta property="og:description" content="总结一下vue3.0带来的部分新特性  setup() ref() reactive() isRef() toRefs() computed() watch() LifeCycle Hooks(新的生命周期) Template refs globalProperties Suspense  vue2与vue3的对比 对TypeScript支持不友好（所有属性都放在了this对象上，难以推到组件的数">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-11-12T08:11:26.687Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue3新特性">
+<meta name="twitter:description" content="总结一下vue3.0带来的部分新特性  setup() ref() reactive() isRef() toRefs() computed() watch() LifeCycle Hooks(新的生命周期) Template refs globalProperties Suspense  vue2与vue3的对比 对TypeScript支持不友好（所有属性都放在了this对象上，难以推到组件的数">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/11/04/vue2&vue3/">
+
+
+
+
+
+  <title>vue3新特性 | Rainy's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Rainy's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/04/vue2&vue3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Rainy">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rainy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">vue3新特性</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-04T00:00:00+08:00">
+                2020-11-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/面试/" itemprop="url" rel="index">
+                    <span itemprop="name">面试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>总结一下vue3.0带来的部分新特性</p>
+<ol>
+<li>setup()</li>
+<li>ref()</li>
+<li>reactive()</li>
+<li>isRef()</li>
+<li>toRefs()</li>
+<li>computed()</li>
+<li>watch()</li>
+<li>LifeCycle Hooks(新的生命周期)</li>
+<li>Template refs</li>
+<li>globalProperties</li>
+<li>Suspense</li>
+</ol>
+<h2 id="vue2与vue3的对比"><a href="#vue2与vue3的对比" class="headerlink" title="vue2与vue3的对比"></a>vue2与vue3的对比</h2><ul>
+<li>对TypeScript支持不友好（所有属性都放在了this对象上，难以推到组件的数据类型）</li>
+<li>大量的Api挂载在Vue对象的原型上，难以实现TreeShaking</li>
+<li>架构层面对跨平台dom渲染开发支持不友好</li>
+<li>Composition Api 受ReactHock启发</li>
+<li>更方便的支持了jsx</li>
+<li>vue3的Template支持多个根标签， vue2不支持</li>
+<li>对虚拟DOM进行了重写，对模板的编译进行了优化操作</li>
+</ul>
+<h2 id="一、setup函数"><a href="#一、setup函数" class="headerlink" title="一、setup函数"></a>一、setup函数</h2><p>setup()函数是vue3中，专门为为组件提供的新属性。它为我们使用vue3的Composition Api新特性提供了统一的入口，setup函数会在beforecreate之后、create之前执行，vue3也是取消了这两个钩子，统一用setup代替，该函数相当于一个生命周期函数，vue中过去的data，methods，watch等全部都用对应的新增api写在setup()函数中</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">setup(props, context) &#123;</span><br><span class="line">  context.attrs</span><br><span class="line">  context.slots</span><br><span class="line">  context.parent</span><br><span class="line">  context.root</span><br><span class="line">  comtext.emit</span><br><span class="line">  comtext.refs</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>props: 用来接收props数据</li>
+<li>context用来定义上下文，上下文对象中包含了一些有用的属性，这些属性在vue2.x中需要通过this才能访问到，在setup函数中无法访问到this，是个undefinded</li>
+<li>返回值：return{}, 返回响应式数据，模板中需要使用的函数</li>
+</ul>
+<h2 id="二、reactive函数"><a href="#二、reactive函数" class="headerlink" title="二、reactive函数"></a>二、reactive函数</h2><p>reactive()函数接收一个普通对象，返回一个响应式的数据对象，想要使用创建的响应式数据也很简单，创建出来之后，在setup()中return出去，直接在template中调用即可</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  &#123;&#123; name &#125;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">lang</span>=<span class="string">"tx"</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">import</span> &#123; defineComponent, reactive, ref, toRefs &#125; <span class="keyword">from</span> <span class="string">'vue'</span>;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">export</span> <span class="keyword">default</span> defineComponent(&#123;</span></span><br><span class="line">    setup(props, context) &#123;</span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> state = reactive(&#123;</span></span><br><span class="line"><span class="javascript">        name: <span class="string">'test'</span></span></span><br><span class="line">      &#125;);</span><br><span class="line"><span class="javascript">      <span class="keyword">return</span> state</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="三、ref-函数"><a href="#三、ref-函数" class="headerlink" title="三、ref()函数"></a>三、ref()函数</h2><p>ref()函数用来根据给定的值创建一个响应式的数据对象，ref()函数调用的返回值是一个对象，这个对象只包含了一个value属性，只在setup()函数内部访问ref函数需要加.value</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">class</span>=<span class="string">"main"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    &#123;&#123; count &#125;&#125; //10</span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">lang</span>=<span class="string">"ts"</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="keyword">import</span> &#123; defineComponent, ref &#125; <span class="keyword">from</span> <span class="string">'vue'</span>;</span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> defineComponent(&#123;</span></span><br><span class="line">  setup() &#123;</span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> count = ref&lt;number&gt;(<span class="number">10</span>);</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 在js中获取ref中定义的值，需要通过value属性</span></span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(count.value);</span></span><br><span class="line"><span class="javascript">    <span class="keyword">return</span> &#123;</span></span><br><span class="line">      count</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在reactive对象中访问ref创建的创建的响应式数据</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"main"</span>&gt;</span></span><br><span class="line">    &#123;&#123; count &#125;&#125; -&#123;&#123; t &#125;&#125; //10 -100</span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">lang</span>=<span class="string">"ts"</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="keyword">import</span> &#123;defineComponent, reactive, ref, toRefs&#125; <span class="keyword">from</span> <span class="string">'vue'</span>;</span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> defineComponent(&#123;</span></span><br><span class="line">  setup() &#123;</span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> count = ref&lt;number&gt;(<span class="number">10</span>);</span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> obj = reactive(&#123;</span></span><br><span class="line">      t: 100,</span><br><span class="line">      count</span><br><span class="line">    &#125;)</span><br><span class="line"><span class="javascript">    <span class="comment">// 通过reactive来获取ref的值时，不需要使用.valte属性</span></span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(obj.count);</span></span><br><span class="line"><span class="javascript">    <span class="keyword">return</span> &#123;</span></span><br><span class="line">      ...toRefs(obj)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="四、isRef-函数"><a href="#四、isRef-函数" class="headerlink" title="四、isRef()函数"></a>四、isRef()函数</h2><p>isRef()用来判断某个值是否为ref()创建出来的对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;script lang=<span class="string">"ts"</span>&gt;</span><br><span class="line"><span class="keyword">import</span> &#123; defineComponent, isRef, ref &#125; <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> defineComponent(&#123;</span><br><span class="line">  setup(props, context) &#123;</span><br><span class="line">    <span class="keyword">let</span> state = reactive(&#123;</span><br><span class="line">      name: <span class="string">'test'</span></span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">const</span> age = ref(<span class="number">18</span>);</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      ...toRefs(state),</span><br><span class="line">      age</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="五、toRefs-函数"><a href="#五、toRefs-函数" class="headerlink" title="五、toRefs()函数"></a>五、toRefs()函数</h2><p>toRefs()函数可以将reactive创建出来的响应式对象，转换为普通对象，只不过这个对象上的每一个节点，都是ref()类型的响应式数据</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"main"</span>&gt;</span></span><br><span class="line">    &#123;&#123; name &#125;&#125; // test</span><br><span class="line">    &#123;&#123; age &#125;&#125; // 18</span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="keyword">import</span> &#123; defineComponent, reactive, ref, toRefs &#125; <span class="keyword">from</span> <span class="string">'vue'</span>;</span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> defineComponent(&#123;</span></span><br><span class="line">  setup(props, context) &#123;</span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> state =  reactive(&#123;</span></span><br><span class="line"><span class="javascript">      name: <span class="string">'test'</span></span></span><br><span class="line">    &#125;);</span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> age = ref(<span class="number">18</span>);</span></span><br><span class="line"><span class="javascript">    <span class="keyword">return</span> &#123;</span></span><br><span class="line">      ...toRefs(states),</span><br><span class="line">      age</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="六、computed"><a href="#六、computed" class="headerlink" title="六、computed()"></a>六、computed()</h2><p>该函数用来创造计算属性，和过去一样，它的返回值是一个ref对象。里面可以传方法，或者一个对象，对象中包含set()、get()方法</p>
+<h3 id="6-1-创建只读的计算属性"><a href="#6-1-创建只读的计算属性" class="headerlink" title="6.1 创建只读的计算属性"></a>6.1 创建只读的计算属性</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;scripr lang=<span class="string">"ts"</span>&gt;</span><br><span class="line"><span class="keyword">import</span> &#123;computed, defineComponent, ref&#125; <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line">expoet <span class="keyword">default</span> defineComponent(&#123;</span><br><span class="line">  setup(props, context) &#123;</span><br><span class="line">    <span class="keyword">const</span> age = ref(<span class="number">8</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 根据age的值，创建一个响应式的计算属性readOnlyAge，它会根据依赖的ref自动计算并返回一个新的ref</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> readOnlyAge = computed(<span class="function"><span class="params">()</span> =&gt;</span> age.value++) <span class="comment">// 19</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      age,</span><br><span class="line">      readOnlyAge</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">&lt;<span class="regexp">/scripr&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="6-2-通过set-、get-方法创建一个可读可写的计算属性"><a href="#6-2-通过set-、get-方法创建一个可读可写的计算属性" class="headerlink" title="6.2 通过set()、get()方法创建一个可读可写的计算属性"></a>6.2 通过set()、get()方法创建一个可读可写的计算属性</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">import</span> &#123;computed, defineComponent, ref&#125; <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> defineComponent(&#123;</span><br><span class="line">  setup(props, context) &#123;</span><br><span class="line">    <span class="keyword">const</span> age = ref&lt;number&gt;(<span class="number">18</span>)</span><br><span class="line">    <span class="keyword">const</span> computedAge = computed(&#123;</span><br><span class="line">      <span class="keyword">get</span>: () =&gt; age.value + 1,</span><br><span class="line">      <span class="keyword">set</span>: () =&gt; age.value + value</span><br><span class="line">    &#125;)</span><br><span class="line">    // 为计算属性赋值的操作，会触发<span class="keyword">set</span>函数，触发<span class="keyword">set</span>函数后，age的值会被更新</span><br><span class="line">    age.value = 100;</span><br><span class="line">    return &#123;</span><br><span class="line">      age,</span><br><span class="line">      computedAge</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="七、watch-函数"><a href="#七、watch-函数" class="headerlink" title="七、watch()函数"></a>七、watch()函数</h2><p>whatch函数用来监听特定的数据源，并在回调函数中执行副作用。默认情况是懒执行的，也就是说再侦听的数据源变更时才执行回调。</p>
+<h3 id="7-1监听用reactive声明的数据源"><a href="#7-1监听用reactive声明的数据源" class="headerlink" title="7.1监听用reactive声明的数据源"></a>7.1监听用reactive声明的数据源</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">import</span> &#123; computed, definComponent, reactive, toRefs, watch &#125; <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> defineComponent(&#123;</span><br><span class="line">  setup(props, context) &#123;</span><br><span class="line">    <span class="keyword">const</span> state = reactive&lt;Person&gt;(&#123; <span class="attr">name</span>: <span class="string">'vue'</span>, <span class="attr">age</span>: <span class="number">10</span> &#125;);</span><br><span class="line"></span><br><span class="line">    watch(</span><br><span class="line">      () =&gt; state.age,</span><br><span class="line">      (age, preAge) =&gt; &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(age); <span class="comment">// 100</span></span><br><span class="line">        <span class="built_in">console</span>.log(preAge); <span class="comment">// 10</span></span><br><span class="line">      &#125;</span><br><span class="line">    )</span><br><span class="line">    <span class="comment">// 修改age时会触发watch的回调，打印变更前后的值</span></span><br><span class="line">    state.age = <span class="number">10</span></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      ...toRefs(state)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="7-2监听用ref声明的数据源"><a href="#7-2监听用ref声明的数据源" class="headerlink" title="7.2监听用ref声明的数据源"></a>7.2监听用ref声明的数据源</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;script lang=<span class="string">"ts"</span>&gt;</span><br><span class="line"><span class="keyword">import</span> &#123; defineComponent, ref, watch &#125; <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line">interface Person &#123;</span><br><span class="line">  name: string,</span><br><span class="line">  age: number</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> defineComponent(&#123;</span><br><span class="line">  setup(props, context) &#123;</span><br><span class="line">    <span class="keyword">const</span> age = ref&lt;number&gt;(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">    watch(age, () =&gt; <span class="built_in">console</span>.log(age.value)); <span class="comment">// 100</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 修改age时会触发watch的回调，打印变更后的值</span></span><br><span class="line">    age.value = <span class="number">100</span></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      age</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="7-3同时监听多个值"><a href="#7-3同时监听多个值" class="headerlink" title="7.3同时监听多个值"></a>7.3同时监听多个值</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;script lang=<span class="string">"ts"</span>&gt;</span><br><span class="line"><span class="keyword">import</span> &#123; watch, computed, defineComponent, reactive, toRefs &#125; <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line">interface Person &#123;</span><br><span class="line">  name: string,</span><br><span class="line">  age: number</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> defineCompontent(&#123;</span><br><span class="line">  setup(props, context) &#123;</span><br><span class="line">    <span class="keyword">const</span> state = reactive&lt;Person&gt;(&#123; <span class="attr">name</span>: <span class="string">'vue'</span>, <span class="attr">age</span>: <span class="number">10</span> &#125;);</span><br><span class="line"></span><br><span class="line">    watch(</span><br><span class="line">      [<span class="function"><span class="params">()</span> =&gt;</span> state.age, () =&gt; state.name],</span><br><span class="line">      ([newName, newAge], [oldName, oldAge]) =&gt; &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(newName);</span><br><span class="line">        <span class="built_in">console</span>.log(newAge);</span><br><span class="line"></span><br><span class="line">        <span class="built_in">console</span>.log(oldName);</span><br><span class="line">        <span class="built_in">console</span>.log(oldAge);</span><br><span class="line">      &#125;</span><br><span class="line">    )</span><br><span class="line">    <span class="comment">// 修改age时会触发watch的回调，打印变更前后的值，此时需要注意，更改其中一个值，都会执行watch的回调</span></span><br><span class="line">    state.age = <span class="number">100</span></span><br><span class="line">    state.name = <span class="string">'vue3'</span></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      ...toRefs(state)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="7-4-stop停止监听"><a href="#7-4-stop停止监听" class="headerlink" title="7.4 stop停止监听"></a>7.4 stop停止监听</h3><p>在setup()函数内创建的watch监视，会在当前组件被销毁的时候自动停止。如果想要明确的停止某个监视，可以调用watch()函数的返回值即可，语法如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&lt;script lang=<span class="string">"ts"</span>&gt;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="keyword">set</span> &#125; 'lodash';</span><br><span class="line">import &#123; computed, defineComponent, reactive, toRefs, watch &#125; <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line">interface Person &#123;</span><br><span class="line">  name: string,</span><br><span class="line">  age: number</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> defineComponent(&#123;</span><br><span class="line">  setup(props, context) &#123;</span><br><span class="line">    <span class="keyword">const</span> state = reactive&lt;Person&gt;(&#123; <span class="attr">name</span>: <span class="string">'vue'</span>, <span class="attr">age</span>: <span class="number">10</span> &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> stop = watch(</span><br><span class="line">      [<span class="function"><span class="params">()</span> =&gt;</span> stage.age, () =&gt; state.name],</span><br><span class="line">      ([newName, newAge],[oldName, oldAge]) =&gt; &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(newName);</span><br><span class="line">        <span class="built_in">console</span>.log(newAge);</span><br><span class="line"></span><br><span class="line">        <span class="built_in">console</span>.log(oldName);</span><br><span class="line">        <span class="built_in">console</span>.log(oldAge);</span><br><span class="line">      &#125;</span><br><span class="line">    )</span><br><span class="line">    <span class="comment">// 修改age时会触发watch的回调， 打印变更前后的值，此时需要注意，更改其中一个值，都会执行watch的回调</span></span><br><span class="line">    state.age = <span class="number">100</span>;</span><br><span class="line">    state.name = <span class="string">'vue3'</span></span><br><span class="line"></span><br><span class="line">    setTimeOut(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      stop()</span><br><span class="line">      <span class="comment">// 此时修改时，不会触发watch回调</span></span><br><span class="line">      state.age = <span class="number">1000</span></span><br><span class="line">      state.name = <span class="string">'vue3-'</span></span><br><span class="line">    &#125;, <span class="number">1000</span>)<span class="comment">// 1秒后取消watch的监听</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      ...toRefs(state)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="八、lifeCycle-Hooks（新的生命后期）"><a href="#八、lifeCycle-Hooks（新的生命后期）" class="headerlink" title="八、lifeCycle Hooks（新的生命后期）"></a>八、lifeCycle Hooks（新的生命后期）</h2><p>新版的生命周期函数，可以按需导入到组件中，且只能在setup()函数中使用，但是也可以在srtup外定义，在setup中使用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;script lang=<span class="string">"ts"</span>&gt;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="keyword">set</span> &#125; from 'lodash';</span><br><span class="line">import &#123; defineComponent, onBeforeMount, onBeforeUnmount, onBeforeUpdate, onErrorCaptured, onMounted, onUnMounted, onUpdate &#125; <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> defineComponent(&#123;</span><br><span class="line">  setup(props, context) &#123;</span><br><span class="line">    onBeforeMount(<span class="function"><span class="params">()</span>=&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'beformounted!'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">    onMounted(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'mounted!'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    onBeforeUpdate(<span class="function"><span class="params">()</span>=&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'beforupdated!'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">    onUpdated(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'updated!'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    onBeforeUnmount(<span class="function"><span class="params">()</span>=&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'beforunmounted!'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">    onUnmounted(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'unmounted!'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    onErrorCaptured(<span class="function"><span class="params">()</span>=&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'errorCaptured!'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="九、Template-refs"><a href="#九、Template-refs" class="headerlink" title="九、Template refs"></a>九、Template refs</h2><p>通过refs来获取真实的dom元素，这个和react的用法一样，为了获得对模板内元素或组件实例的引用，我们可以像往常一样在setup()中声明一个ref并返回它</p>
+<ol>
+<li>还是跟往常一样，在html中写入ref的名称</li>
+<li>在setup中定义一个ref</li>
+<li>setup中返回ref的实例</li>
+<li>onMounted中可以得到ref的RefImpl的对象，通过.value</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 第一步：还是跟往常一样，在html中写入ref的名称 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"main"</span> <span class="attr">ref</span>=<span class="string">"elmRefs"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>1111<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">lang</span>=<span class="string">"ts"</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="keyword">import</span> &#123; <span class="keyword">set</span> &#125; from 'lodash';</span></span><br><span class="line"><span class="javascript"><span class="keyword">import</span> &#123; defineComponent, onMounted, ref &#125; <span class="keyword">from</span> <span class="string">'vue'</span>;</span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> defineComponent(&#123;</span></span><br><span class="line">  setup(props, context) &#123;</span><br><span class="line"><span class="javascript">    <span class="comment">// 获取真实dom</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> elmRefs = ref&lt;<span class="literal">null</span> | HTMLElement&gt;(<span class="literal">null</span>);</span></span><br><span class="line"><span class="javascript">    onMounted(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(elmRefs.value); <span class="comment">// 得到一个 RefImpl 的对象，通过.value访问到数据</span></span></span><br><span class="line">    &#125;)</span><br><span class="line"><span class="javascript">    <span class="keyword">return</span> &#123;</span></span><br><span class="line">      elmRefs</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="十、vue的全局配置"><a href="#十、vue的全局配置" class="headerlink" title="十、vue的全局配置"></a>十、vue的全局配置</h2><p>通过vue实例上config来配置，包含Vue应用程序全局配置的对象。您可以在挂载应用之前修改下面列出的属性</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> app = Vue.createApp(&#123;&#125;)</span><br><span class="line"></span><br><span class="line">app.config = &#123;...&#125;</span><br></pre></td></tr></table></figure>
+
+<p>为组件渲染功能和观察程序期间的未捕获错误分配处理程序。错误和应用程序实例将调用处理程序</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.config.errorHandle = <span class="function">(<span class="params">err, vm, info</span>) =&gt;</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以在应用程序内的任何组件实例中访问的全局属性，组件的属性将具有优先权。这可以代替Vue2.X Vue.prototype扩展：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> app = Vue.createApp(&#123;&#125;)</span><br><span class="line">app.config.globalProperties.$http = <span class="string">'xxxxxxxxxs'</span></span><br></pre></td></tr></table></figure>
+
+<p>可以在组件中通过getCurrentInstance()来获取全局globalProperties中配置的信息，getCurrentInstance方法获取当前组件的实例，然后通过ctx属性获得当前上下文，这样我们就能在setup中使用router和vuex，通过这个属性我们就可以操作变量、全局属性、组件属性等等</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">setup() &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; ctx &#125; = getCurrentInstance();</span><br><span class="line">  ctx.$http</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="十一、Suspense组件"><a href="#十一、Suspense组件" class="headerlink" title="十一、Suspense组件"></a>十一、Suspense组件</h2><p>在介绍Vue的Suspense组件之前，我们又必要先了解下React的Suspense组件，因为他们的功能类似。</p>
+<p>React.lazy接受一个函数，这个函数需要动态调用import()。它必须返回一个Promise，该Promise需要resolve一个default export的React组件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Suspense &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">const</span> myComponent = React.lazy(<span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">'./Component'</span>));</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myComponent</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;Suspense fallback=&#123;&lt;div&gt;Loading...&lt;<span class="regexp">/div&gt;&#125;&gt;</span></span><br><span class="line"><span class="regexp">        &lt;myComponent /</span>&gt;</span><br><span class="line">      &lt;<span class="regexp">/Suspense&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Vue3也新增了类似功能的defineAsyncComponent函数，处理动态引入（的组件）。defineAsyncComponent可以接受返回承诺的工厂函数。当您从服务器检索到组件定义时，应该调用Promise的解析回调。您还可以调用reject(reason)来指示负载已经失败</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; defineAsyncComponent &#125; <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> AsyncComp = defineAsyncComponent(<span class="function"><span class="params">()</span> =&gt;</span></span><br><span class="line">  <span class="keyword">import</span>(<span class="string">'./components/AsyncComponent.vue'</span>)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">app.component(<span class="string">'async-component'</span>, AsyncComp)</span><br></pre></td></tr></table></figure>
+
+<p>Vue3也新增了Suspense组件：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  </span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">lang</span>=<span class="string">"ts"</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="keyword">import</span> &#123; defineComponent, defineAsyncComponent &#125; <span class="keyword">from</span> <span class="string">"vue"</span>;</span></span><br><span class="line"><span class="javascript"><span class="keyword">const</span> MyComponent = defineAsyncComponent(<span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">'./Component'</span>));</span></span><br><span class="line"></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> defineComponent(&#123;</span></span><br><span class="line">  components: &#123;</span><br><span class="line">    MyComponent</span><br><span class="line">  &#125;,</span><br><span class="line">  setup() &#123;</span><br><span class="line"><span class="javascript">    <span class="keyword">return</span> &#123;&#125;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="十二、vue3-x完整组件模板结构"><a href="#十二、vue3-x完整组件模板结构" class="headerlink" title="十二、vue3.x完整组件模板结构"></a>十二、vue3.x完整组件模板结构</h2><p>一个完整的vue3.x完整组件模板结构包含了：组件名称、props、components、setup(hooks、computed、watch、methods等)</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"mine"</span> <span class="attr">ref</span>=<span class="string">"elmRefs"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;&#123; name &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;&#123; count &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"handleClick"</span>&gt;</span>测试按钮<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">lang</span>=<span class="string">"ts"</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="keyword">import</span> &#123; computed, defineComponent, getCurrentInstance, onMounted, PropType, reactive, ref, toRefs &#125; <span class="keyword">from</span> <span class="string">"vue"</span> ;</span></span><br><span class="line"></span><br><span class="line">interface IState &#123;</span><br><span class="line">  count: 0,</span><br><span class="line"><span class="javascript">  name: <span class="built_in">String</span>,</span></span><br><span class="line"><span class="javascript">  list: <span class="built_in">Array</span>&lt;object&gt;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> defineComponent(&#123;</span></span><br><span class="line"><span class="javascript">  name: <span class="string">'demo'</span>,</span></span><br><span class="line"><span class="javascript">  <span class="comment">// 父组件传子组件参数</span></span></span><br><span class="line">  props: &#123;</span><br><span class="line">    name: &#123;</span><br><span class="line"><span class="javascript">      type: <span class="built_in">String</span> <span class="keyword">as</span> PropType&lt;<span class="literal">null</span> | <span class="string">''</span>&gt;,</span></span><br><span class="line"><span class="javascript">      <span class="keyword">default</span>: <span class="string">'vue3.x'</span></span></span><br><span class="line">    &#125;,</span><br><span class="line">    list: &#123;</span><br><span class="line"><span class="javascript">      type: <span class="built_in">Array</span> <span class="keyword">as</span> PropType&lt;object[]&gt;,</span></span><br><span class="line"><span class="javascript">      <span class="keyword">default</span>: <span class="function"><span class="params">()</span> =&gt;</span> []</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  components: &#123;</span><br><span class="line"><span class="javascript">    <span class="comment">// TODO 组件注册</span></span></span><br><span class="line">  &#125;,</span><br><span class="line"><span class="javascript">  emits:[<span class="string">"emits-name"</span>], <span class="comment">// 为了提示作用</span></span></span><br><span class="line">  setup (props, context) &#123;</span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(props.name)</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(props.list)</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> state = reactive&lt;IState&gt;(&#123;</span></span><br><span class="line"><span class="javascript">      name: <span class="string">'vue 3.0组件'</span>,</span></span><br><span class="line">      count: 0,</span><br><span class="line">      list: [</span><br><span class="line">        &#123;</span><br><span class="line"><span class="javascript">          name: <span class="string">'vue'</span>,</span></span><br><span class="line">          id: 1</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line"><span class="javascript">          name: <span class="string">'vuex'</span>,</span></span><br><span class="line">          id: 2</span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> a = computed(<span class="function"><span class="params">()</span> =&gt;</span> state.name)</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">    onMounted(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="function"><span class="keyword">function</span> <span class="title">handleClick</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line">      state.count++</span><br><span class="line"><span class="javascript">      <span class="comment">// 调用父组件方法</span></span></span><br><span class="line"><span class="javascript">      context.emit(<span class="string">'emits-name'</span>, state.count)</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    reutrn &#123;</span><br><span class="line">      ...toRefs(state),</span><br><span class="line">      handleClick</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="vue3的生态"><a href="#vue3的生态" class="headerlink" title="vue3的生态"></a>vue3的生态</h2><ul>
+<li>官网</li>
+<li>源码</li>
+<li>vite 构建器</li>
+<li><a href="https://cli.vuejs.org/" target="_blank" rel="noopener">脚手架</a></li>
+<li>vue-route-next</li>
+<li>vuex4.0</li>
+</ul>
+<p>UI组件库</p>
+<ul>
+<li>vant2.x</li>
+<li>Ant Design of Vue 2.x</li>
+<li>element-plus</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/10/29/loadImage/" rel="next" title="加载图片">
+                <i class="fa fa-chevron-left"></i> 加载图片
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/11/05/outline/" rel="prev" title="面试相关">
+                面试相关 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Rainy</p>
+              <p class="site-description motion-element" itemprop="description">坚持每天搞定一点点前端小问题</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#vue2与vue3的对比"><span class="nav-number">1.</span> <span class="nav-text">vue2与vue3的对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一、setup函数"><span class="nav-number">2.</span> <span class="nav-text">一、setup函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、reactive函数"><span class="nav-number">3.</span> <span class="nav-text">二、reactive函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、ref-函数"><span class="nav-number">4.</span> <span class="nav-text">三、ref()函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、isRef-函数"><span class="nav-number">5.</span> <span class="nav-text">四、isRef()函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、toRefs-函数"><span class="nav-number">6.</span> <span class="nav-text">五、toRefs()函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、computed"><span class="nav-number">7.</span> <span class="nav-text">六、computed()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-创建只读的计算属性"><span class="nav-number">7.1.</span> <span class="nav-text">6.1 创建只读的计算属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-通过set-、get-方法创建一个可读可写的计算属性"><span class="nav-number">7.2.</span> <span class="nav-text">6.2 通过set()、get()方法创建一个可读可写的计算属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七、watch-函数"><span class="nav-number">8.</span> <span class="nav-text">七、watch()函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1监听用reactive声明的数据源"><span class="nav-number">8.1.</span> <span class="nav-text">7.1监听用reactive声明的数据源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2监听用ref声明的数据源"><span class="nav-number">8.2.</span> <span class="nav-text">7.2监听用ref声明的数据源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-3同时监听多个值"><span class="nav-number">8.3.</span> <span class="nav-text">7.3同时监听多个值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-4-stop停止监听"><span class="nav-number">8.4.</span> <span class="nav-text">7.4 stop停止监听</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#八、lifeCycle-Hooks（新的生命后期）"><span class="nav-number">9.</span> <span class="nav-text">八、lifeCycle Hooks（新的生命后期）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#九、Template-refs"><span class="nav-number">10.</span> <span class="nav-text">九、Template refs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#十、vue的全局配置"><span class="nav-number">11.</span> <span class="nav-text">十、vue的全局配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#十一、Suspense组件"><span class="nav-number">12.</span> <span class="nav-text">十一、Suspense组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#十二、vue3-x完整组件模板结构"><span class="nav-number">13.</span> <span class="nav-text">十二、vue3.x完整组件模板结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vue3的生态"><span class="nav-number">14.</span> <span class="nav-text">vue3的生态</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Rainy</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
