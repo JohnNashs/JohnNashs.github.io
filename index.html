@@ -252,6 +252,147 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/12/04/checkVersion/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Rainy">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rainy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/12/04/checkVersion/" itemprop="url">小程序检查更新</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-12-04T00:00:00+08:00">
+                2020-12-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/常用JS工具代码/" itemprop="url" rel="index">
+                    <span itemprop="name">常用JS工具代码</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 版本更新 */</span></span><br><span class="line">checkVersion() &#123;</span><br><span class="line">  <span class="keyword">if</span> (wx.canIUse(<span class="string">'getUpdateManager'</span>)) &#123;</span><br><span class="line">    <span class="keyword">const</span> updateManager = wx.getUpdateManager()</span><br><span class="line">    updateManager.onCheckForUpdate(<span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 请求完新版本信息的回调</span></span><br><span class="line">      <span class="keyword">if</span> (res.hasUpdate) &#123;</span><br><span class="line">        updateManager.onUpdateReady(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">          wx.showModal(&#123;</span><br><span class="line">            title: <span class="string">'更新提示'</span>,</span><br><span class="line">            content: <span class="string">'新版本已经准备好，请点击重启应用~'</span>,</span><br><span class="line">            showCancel: <span class="literal">false</span>,</span><br><span class="line">            success: <span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">              <span class="comment">// res: &#123;errMsg: "showModal: ok", cancel: false, confirm: true&#125;</span></span><br><span class="line">              <span class="keyword">if</span> (res.confirm) &#123;</span><br><span class="line">                <span class="comment">// 新的版本已经下载好，调用 applyUpdate 应用新版本并重启</span></span><br><span class="line">                updateManager.applyUpdate()</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;)</span><br><span class="line">        &#125;)</span><br><span class="line">        updateManager.onUpdateFailed(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">          <span class="comment">// 新的版本下载失败</span></span><br><span class="line">          wx.showModal(&#123;</span><br><span class="line">            title: <span class="string">'已经有新版本了哟~'</span>,</span><br><span class="line">            content: <span class="string">'新版本已经上线啦~，请您删除当前小程序，重新搜索打开哟~'</span></span><br><span class="line">          &#125;)</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/12/layDate/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1717,147 +1858,6 @@
 <p>这个是简单，但是这里是为了引出涉及到的另一个<code>jQuery</code>函数<code>jQuery.type</code>，这个函数用于类型判断。</p>
 <p>为什么不用原生js的typeof？因为不好用！</p>
 
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/04/checkVersion/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Rainy">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rainy's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/04/checkVersion/" itemprop="url">小程序检查更新</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-04T00:00:00+08:00">
-                2019-12-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/常用JS工具代码/" itemprop="url" rel="index">
-                    <span itemprop="name">常用JS工具代码</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 版本更新 */</span></span><br><span class="line">checkVersion() &#123;</span><br><span class="line">  <span class="keyword">if</span> (wx.canIUse(<span class="string">'getUpdateManager'</span>)) &#123;</span><br><span class="line">    <span class="keyword">const</span> updateManager = wx.getUpdateManager()</span><br><span class="line">    updateManager.onCheckForUpdate(<span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 请求完新版本信息的回调</span></span><br><span class="line">      <span class="keyword">if</span> (res.hasUpdate) &#123;</span><br><span class="line">        updateManager.onUpdateReady(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">          wx.showModal(&#123;</span><br><span class="line">            title: <span class="string">'更新提示'</span>,</span><br><span class="line">            content: <span class="string">'新版本已经准备好，请点击重启应用~'</span>,</span><br><span class="line">            showCancel: <span class="literal">false</span>,</span><br><span class="line">            success: <span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">              <span class="comment">// res: &#123;errMsg: "showModal: ok", cancel: false, confirm: true&#125;</span></span><br><span class="line">              <span class="keyword">if</span> (res.confirm) &#123;</span><br><span class="line">                <span class="comment">// 新的版本已经下载好，调用 applyUpdate 应用新版本并重启</span></span><br><span class="line">                updateManager.applyUpdate()</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;)</span><br><span class="line">        &#125;)</span><br><span class="line">        updateManager.onUpdateFailed(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">          <span class="comment">// 新的版本下载失败</span></span><br><span class="line">          wx.showModal(&#123;</span><br><span class="line">            title: <span class="string">'已经有新版本了哟~'</span>,</span><br><span class="line">            content: <span class="string">'新版本已经上线啦~，请您删除当前小程序，重新搜索打开哟~'</span></span><br><span class="line">          &#125;)</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
       
