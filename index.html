@@ -957,152 +957,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/28/IOS-Date/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Rainy">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rainy's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/10/28/IOS-Date/" itemprop="url">IOS中new Date('2020-10-28 00:00:00')显示为NAN</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-28T00:00:00+08:00">
-                2020-10-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/日常小bug集合/" itemprop="url" rel="index">
-                    <span itemprop="name">日常小bug集合</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>在IOS端中，使用如下方法会获得NaN，安卓手机则是正常计算</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'2020-10-28 00:00:00'</span>).getTime()</span><br></pre></td></tr></table></figure>
-
-<h2 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> date = <span class="string">'2019/02/26 18:34:33'</span>.replace(<span class="regexp">/-/g</span>,<span class="string">"/"</span>);</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(date).getTime()</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'2020/10/28 00:00:00'</span>).getTime()</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/28/DeviceMotionEvent/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1205,6 +1059,152 @@
 <p>通过一些交互，引导用户触发浏览器获取动作与方向的授权，在用户同意授权之后，再执行相关操作</p>
 </blockquote>
 
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/28/IOS-Date/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Rainy">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rainy's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/10/28/IOS-Date/" itemprop="url">IOS中new Date('2020-10-28 00:00:00')显示为NAN</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-28T00:00:00+08:00">
+                2020-10-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/日常小bug集合/" itemprop="url" rel="index">
+                    <span itemprop="name">日常小bug集合</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>在IOS端中，使用如下方法会获得NaN，安卓手机则是正常计算</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'2020-10-28 00:00:00'</span>).getTime()</span><br></pre></td></tr></table></figure>
+
+<h2 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> date = <span class="string">'2019/02/26 18:34:33'</span>.replace(<span class="regexp">/-/g</span>,<span class="string">"/"</span>);</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(date).getTime()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'2020/10/28 00:00:00'</span>).getTime()</span><br></pre></td></tr></table></figure>
           
         
       
@@ -1764,7 +1764,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/29/canvas2Img/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/04/checkVersion/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Rainy">
@@ -1783,7 +1783,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/10/29/canvas2Img/" itemprop="url">图片转base64方法方法汇总</a></h1>
+                <a class="post-title-link" href="/2019/12/04/checkVersion/" itemprop="url">小程序检查更新</a></h1>
         
 
         <div class="post-meta">
@@ -1795,8 +1795,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-29T00:00:00+08:00">
-                2019-10-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-04T00:00:00+08:00">
+                2019-12-04
               </time>
             
 
@@ -1857,12 +1857,7 @@
       
         
           
-            <h2 id="jQuery图片转base64方法"><a href="#jQuery图片转base64方法" class="headerlink" title="jQuery图片转base64方法"></a>jQuery图片转base64方法</h2><p>引入fileReader插件<code>filereader.min.js</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">that.$upload.find(<span class="string">'#uploadFile'</span>).on(<span class="string">'change'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span></span><br><span class="line">        file = <span class="keyword">this</span>.files[<span class="number">0</span>],</span><br><span class="line">        fileReader = <span class="keyword">new</span> FileReader();</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> file === <span class="string">'undefined'</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(file.type &amp;&amp; !<span class="regexp">/image\/\w+/</span>.test(file.type)) &#123;</span><br><span class="line">        alert(<span class="string">'请上传图片文件'</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    fileReader.readAsDataURL(file);</span><br><span class="line">    fileReader.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> result = <span class="keyword">this</span>.result;</span><br><span class="line">        <span class="keyword">var</span> img = <span class="keyword">new</span> Image();</span><br><span class="line">        <span class="keyword">var</span> exif;</span><br><span class="line">        <span class="keyword">var</span> base64 = result.replace(<span class="regexp">/^.*?,/</span>, <span class="string">''</span>);</span><br><span class="line">        <span class="keyword">var</span> binary = atob(base64);</span><br><span class="line">        <span class="keyword">var</span> binaryData = <span class="keyword">new</span> BinaryFile(binary);</span><br><span class="line">        exif = EXIF.readFromBinaryFile(binaryData);</span><br><span class="line">        <span class="keyword">var</span> orientation = exif ? exif.Orientation : <span class="number">1</span>;</span><br><span class="line">        cutCanvas.style.display = <span class="string">'block'</span>;</span><br><span class="line">        ctrlLayer.style.display = <span class="string">'block'</span>;</span><br><span class="line">        that.$upload.find(<span class="string">'.upload-info'</span>).hide();</span><br><span class="line">        that.$upload.find(<span class="string">'.review'</span>).show();</span><br><span class="line">        that.$upload.find(<span class="string">'.cut-tips'</span>).show();</span><br><span class="line">        img.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            cutCanvas.getContext(<span class="string">"2d"</span>).setTransform(<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">            <span class="keyword">var</span> gesturableImg = <span class="keyword">new</span> ImgTouchCanvas(&#123;</span><br><span class="line">                canvas: cutCanvas,</span><br><span class="line">                contrler: ctrlLayer,</span><br><span class="line">                path: img.src,</span><br><span class="line">                imgRoate: orientation</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;;</span><br><span class="line">        that.isUpload = <span class="literal">true</span>;</span><br><span class="line">        img.src = result;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="微信小程序图片转base64方法"><a href="#微信小程序图片转base64方法" class="headerlink" title="微信小程序图片转base64方法"></a>微信小程序图片转base64方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 上传头像</span></span><br><span class="line">uploadImg() &#123;</span><br><span class="line">    <span class="keyword">let</span> that = <span class="keyword">this</span></span><br><span class="line">    wx.chooseImage(&#123;</span><br><span class="line">        count: <span class="number">1</span>,</span><br><span class="line">        sizeType: [<span class="string">'compressed'</span>],</span><br><span class="line">        sourceType: [<span class="string">'album'</span>, <span class="string">'camera'</span>],</span><br><span class="line">        success (res) &#123;</span><br><span class="line">        wx.showLoading(&#123;</span><br><span class="line">            title: <span class="string">'上传中…'</span>, <span class="comment">// 提示的内容,</span></span><br><span class="line">            mask: <span class="literal">true</span> <span class="comment">// 显示透明蒙层，防止触摸穿透,</span></span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="comment">// tempFilePath可以作为img标签的src属性显示图片</span></span><br><span class="line">        wx.getFileSystemManager().readFile(&#123;</span><br><span class="line">            filePath: res.tempFilePaths[<span class="number">0</span>], <span class="comment">// 选择图片返回的相对路径</span></span><br><span class="line">            encoding: <span class="string">'base64'</span>, <span class="comment">// 编码格式</span></span><br><span class="line">            success: <span class="function"><span class="params">r1</span> =&gt;</span> &#123; <span class="comment">// 成功的回调</span></span><br><span class="line">            <span class="comment">// console.log('data:image/png;base64,' + r1.data)</span></span><br><span class="line">            that.headerUrl = <span class="string">'data:image/png;base64,'</span> + r1.data</span><br><span class="line">            <span class="keyword">let</span> params = &#123;</span><br><span class="line">                code: that.headerUrl</span><br><span class="line">            &#125;</span><br><span class="line">            that.uploadImg(params)</span><br><span class="line">            that.$apply()</span><br><span class="line">            &#125;,</span><br><span class="line">            fail: <span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">            wx.hideLoading()</span><br><span class="line">            wx.showToast(&#123;</span><br><span class="line">                title: <span class="string">'上传图片失败'</span>,</span><br><span class="line">                icon: <span class="string">'none'</span></span><br><span class="line">            &#125;)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-
-
+            <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 版本更新 */</span></span><br><span class="line">checkVersion() &#123;</span><br><span class="line">  <span class="keyword">if</span> (wx.canIUse(<span class="string">'getUpdateManager'</span>)) &#123;</span><br><span class="line">    <span class="keyword">const</span> updateManager = wx.getUpdateManager()</span><br><span class="line">    updateManager.onCheckForUpdate(<span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 请求完新版本信息的回调</span></span><br><span class="line">      <span class="keyword">if</span> (res.hasUpdate) &#123;</span><br><span class="line">        updateManager.onUpdateReady(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">          wx.showModal(&#123;</span><br><span class="line">            title: <span class="string">'更新提示'</span>,</span><br><span class="line">            content: <span class="string">'新版本已经准备好，请点击重启应用~'</span>,</span><br><span class="line">            showCancel: <span class="literal">false</span>,</span><br><span class="line">            success: <span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">              <span class="comment">// res: &#123;errMsg: "showModal: ok", cancel: false, confirm: true&#125;</span></span><br><span class="line">              <span class="keyword">if</span> (res.confirm) &#123;</span><br><span class="line">                <span class="comment">// 新的版本已经下载好，调用 applyUpdate 应用新版本并重启</span></span><br><span class="line">                updateManager.applyUpdate()</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;)</span><br><span class="line">        &#125;)</span><br><span class="line">        updateManager.onUpdateFailed(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">          <span class="comment">// 新的版本下载失败</span></span><br><span class="line">          wx.showModal(&#123;</span><br><span class="line">            title: <span class="string">'已经有新版本了哟~'</span>,</span><br><span class="line">            content: <span class="string">'新版本已经上线啦~，请您删除当前小程序，重新搜索打开哟~'</span></span><br><span class="line">          &#125;)</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -1947,7 +1942,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
