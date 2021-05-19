@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="解决方式 通过点击事件，触发用户主动授权  123456789101112131415161718document.body.addEventListener(&apos;touchend&apos;,function () &amp;#123;  if (/(Android)/i.test(navigator.userAgent)) &amp;#123;    return;  &amp;#125;else if (typeof (win">
+<meta name="description" content="问题描述：之前使用的node版本一直是v8.x.x，最近升级了node版本，为v14.16.0，然后在运行之前Gulp搭建的项目的时候，发现跑不起来，报错如下 123456789101112131415fs.js:45&amp;#125; = primordials;    ^ReferenceError: primordials is not defined    at fs.js:45:5    at">
 <meta property="og:type" content="article">
-<meta property="og:title" content="IOS13之后浏览器获取动作与方向需要用户授权">
-<meta property="og:url" content="http://yoursite.com/2020/10/28/DeviceMotionEvent/index.html">
+<meta property="og:title" content="Gulp与Node版本不兼容">
+<meta property="og:url" content="http://yoursite.com/2021/05/17/Gulp与Node版本不兼容/index.html">
 <meta property="og:site_name" content="Rainy&#39;s Blog">
-<meta property="og:description" content="解决方式 通过点击事件，触发用户主动授权  123456789101112131415161718document.body.addEventListener(&apos;touchend&apos;,function () &amp;#123;  if (/(Android)/i.test(navigator.userAgent)) &amp;#123;    return;  &amp;#125;else if (typeof (win">
+<meta property="og:description" content="问题描述：之前使用的node版本一直是v8.x.x，最近升级了node版本，为v14.16.0，然后在运行之前Gulp搭建的项目的时候，发现跑不起来，报错如下 123456789101112131415fs.js:45&amp;#125; = primordials;    ^ReferenceError: primordials is not defined    at fs.js:45:5    at">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-10-28T08:55:54.023Z">
+<meta property="og:updated_time" content="2021-05-17T09:29:37.868Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="IOS13之后浏览器获取动作与方向需要用户授权">
-<meta name="twitter:description" content="解决方式 通过点击事件，触发用户主动授权  123456789101112131415161718document.body.addEventListener(&apos;touchend&apos;,function () &amp;#123;  if (/(Android)/i.test(navigator.userAgent)) &amp;#123;    return;  &amp;#125;else if (typeof (win">
+<meta name="twitter:title" content="Gulp与Node版本不兼容">
+<meta name="twitter:description" content="问题描述：之前使用的node版本一直是v8.x.x，最近升级了node版本，为v14.16.0，然后在运行之前Gulp搭建的项目的时候，发现跑不起来，报错如下 123456789101112131415fs.js:45&amp;#125; = primordials;    ^ReferenceError: primordials is not defined    at fs.js:45:5    at">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/10/28/DeviceMotionEvent/">
+  <link rel="canonical" href="http://yoursite.com/2021/05/17/Gulp与Node版本不兼容/">
 
 
 
 
 
-  <title>IOS13之后浏览器获取动作与方向需要用户授权 | Rainy's Blog</title>
+  <title>Gulp与Node版本不兼容 | Rainy's Blog</title>
   
 
 
@@ -252,7 +252,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/28/DeviceMotionEvent/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/05/17/Gulp与Node版本不兼容/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Rainy">
@@ -269,7 +269,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">IOS13之后浏览器获取动作与方向需要用户授权</h1>
+          <h1 class="post-title" itemprop="name headline">Gulp与Node版本不兼容</h1>
         
 
         <div class="post-meta">
@@ -281,8 +281,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-28T00:00:00+08:00">
-                2020-10-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-05-17T17:04:13+08:00">
+                2021-05-17
               </time>
             
 
@@ -341,15 +341,20 @@
       
 
       
-        <h2 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h2><blockquote>
-<p>通过点击事件，触发用户主动授权</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.body.addEventListener(<span class="string">'touchend'</span>,<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="regexp">/(Android)/i</span>.test(navigator.userAgent)) &#123;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;<span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> (<span class="built_in">window</span>.DeviceMotionEvent) !== <span class="string">"undefined"</span> &amp;&amp; <span class="keyword">typeof</span> (<span class="built_in">window</span>.DeviceMotionEvent.requestPermission) === <span class="string">"function"</span>) &#123;</span><br><span class="line">      <span class="comment">// (optional) Do something before API request prompt.</span></span><br><span class="line">      <span class="built_in">window</span>.DeviceMotionEvent.requestPermission().then(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="comment">// (optional) Do something after API prompt dismissed.</span></span><br><span class="line">          <span class="keyword">if</span> (response == <span class="string">"granted"</span>) &#123;</span><br><span class="line">              <span class="comment">// window.addEventListener("devicemotion", (e) =&gt; &#123;</span></span><br><span class="line">              <span class="comment">//     // do something for 'e' here.</span></span><br><span class="line">              <span class="comment">// &#125;)</span></span><br><span class="line">              <span class="built_in">window</span>.addEventListener(<span class="string">'devicemotion'</span>, <span class="literal">false</span>);</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">              alert(<span class="string">'您的手机不支持摇一摇ヾ(◍°∇°◍)ﾉﾞ'</span>);</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+        <h2 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h2><p>之前使用的node版本一直是v8.x.x，最近升级了node版本，为v14.16.0，然后在运行之前Gulp搭建的项目的时候，发现跑不起来，报错如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">fs.js:45</span><br><span class="line">&#125; = primordials;</span><br><span class="line">    ^</span><br><span class="line"></span><br><span class="line">ReferenceError: primordials is not defined</span><br><span class="line">    at fs.js:45:5</span><br><span class="line">    at req_ (/Users/fuyumin/Desktop/dz_project/gulp-project/hongchuan/node_modules/natives/index.js:143:24)</span><br><span class="line">    at Object.req [as require] (/Users/fuyumin/Desktop/dz_project/gulp-project/hongchuan/node_modules/natives/index.js:55:10)</span><br><span class="line">    at Object.&lt;anonymous&gt; (/Users/fuyumin/Desktop/dz_project/gulp-project/hongchuan/node_modules/graceful-fs/fs.js:1:37)</span><br><span class="line">    at Module._compile (internal/modules/cjs/loader.js:1063:30)</span><br><span class="line">    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)</span><br><span class="line">    at Module.load (internal/modules/cjs/loader.js:928:32)</span><br><span class="line">    at Function.Module._load (internal/modules/cjs/loader.js:769:14)</span><br><span class="line">    at Module.require (internal/modules/cjs/loader.js:952:19)</span><br><span class="line">    at require (internal/modules/cjs/helpers.js:88:18)</span><br></pre></td></tr></table></figure>
 
-<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><blockquote>
-<p>通过一些交互，引导用户触发浏览器获取动作与方向的授权，在用户同意授权之后，再执行相关操作</p>
-</blockquote>
+<h2 id="原因："><a href="#原因：" class="headerlink" title="原因："></a>原因：</h2><p>我本地项目的Gulp版本如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CLI version: 2.2.0</span><br><span class="line">Local version: 3.9.1</span><br></pre></td></tr></table></figure>
 
+<p><a href="mailto:Gulp@3.x.x" target="_blank" rel="noopener">Gulp@3.x.x</a>与当前<a href="mailto:Node@14.x.x" target="_blank" rel="noopener">Node@14.x.x</a>版本不兼容，官网的建议是Node版本退回到v12.x.x以下（或者升级到<a href="mailto:Gulp@4.x.x" target="_blank" rel="noopener">Gulp@4.x.x</a>），那我哪能接受，毕竟我已经不靠Gulp吃饭了😄，于是开始寻找其他解决方式，终于，在我强大的英语阅读能力下，找到了一篇<a href="https://ourcodeworld.com/articles/read/1188/how-to-solve-gulp-exception-reference-error-primordials-is-not-defined-error" target="_blank" rel="noopener">一分钟解决你的gulp问题</a>，不过现在好像打不开了，还是得靠自己</p>
+<h2 id="解决方式："><a href="#解决方式：" class="headerlink" title="解决方式："></a>解决方式：</h2><p>首先删除node依赖node_modules，删的渣都不要剩，然后在根目录下新建一个<code>npm-shrinkwrap.json</code>文件，配置如下</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"dependencies"</span>: &#123;</span><br><span class="line">    <span class="attr">"graceful-fs"</span>: &#123;</span><br><span class="line">        <span class="attr">"version"</span>: <span class="string">"4.2.2"</span></span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>下一步，常规操作，<code>npm install</code>，然后启动Gulp项目，我的启动命令是<code>gulp serve</code>，你会发现项目神奇般的又跑起来了(其实也没啥神奇的)！</p>
+<h2 id="npm-shrinkwrap-json"><a href="#npm-shrinkwrap-json" class="headerlink" title="npm-shrinkwrap.json"></a>npm-shrinkwrap.json</h2><p>有关<code>npm-shrinkwrap.json</code>文件的作用，我给你们放这了，自己瞅瞅吧！</p>
+<p><a href="https://docs.npmjs.com/cli/v7/configuring-npm/package-lock-json" target="_blank" rel="noopener">package-lock.json | npm Docs</a><br><a href="https://juejin.cn/post/6844903797668462605" target="_blank" rel="noopener">对npm包精准控制之npm-shrinkwrap.json与package-lock.json</a></p>
+<h2 id="END"><a href="#END" class="headerlink" title="END!"></a>END!</h2>
       
     </div>
     
@@ -373,8 +378,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/10/28/IOSDateBug/" rel="next" title="IOS中new Date('2020-10-28 00:00:00')显示为NAN">
-                <i class="fa fa-chevron-left"></i> IOS中new Date('2020-10-28 00:00:00')显示为NAN
+              <a href="/2020/12/04/CheckVersion/" rel="next" title="小程序检查更新">
+                <i class="fa fa-chevron-left"></i> 小程序检查更新
               </a>
             
           </div>
@@ -382,10 +387,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/10/29/LoadImage/" rel="prev" title="加载图片">
-                加载图片 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -508,7 +509,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方式"><span class="nav-number">1.</span> <span class="nav-text">解决方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结论"><span class="nav-number">2.</span> <span class="nav-text">结论</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题描述："><span class="nav-number">1.</span> <span class="nav-text">问题描述：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原因："><span class="nav-number">2.</span> <span class="nav-text">原因：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方式："><span class="nav-number">3.</span> <span class="nav-text">解决方式：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#npm-shrinkwrap-json"><span class="nav-number">4.</span> <span class="nav-text">npm-shrinkwrap.json</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#END"><span class="nav-number">5.</span> <span class="nav-text">END!</span></a></li></ol></div>
             
 
           </div>
