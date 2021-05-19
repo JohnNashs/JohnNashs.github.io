@@ -6,17 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-    <meta name="description" content="Rainy / 1996fuyumin96@gmail.comhangzhou, china  Social GitHub  Experience 2017/7 - Present: Tencent ZJ.QQ.Com  Education 2014/09 - 2018/06: Wenzhou Business College  Hobby basketball table tennis">
+    <meta name="description" content="坚持每天搞定一点点前端小问题">
 <meta property="og:type" content="website">
-<meta property="og:title" content="ABOUT ME">
-<meta property="og:url" content="http://yoursite.com/about/index.html">
+<meta property="og:title" content="搜索">
+<meta property="og:url" content="http://yoursite.com/search/index.html">
 <meta property="og:site_name" content="Rainy&#39;s Blog">
-<meta property="og:description" content="Rainy / 1996fuyumin96@gmail.comhangzhou, china  Social GitHub  Experience 2017/7 - Present: Tencent ZJ.QQ.Com  Education 2014/09 - 2018/06: Wenzhou Business College  Hobby basketball table tennis">
+<meta property="og:description" content="坚持每天搞定一点点前端小问题">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-10-29T07:41:28.609Z">
+<meta property="og:updated_time" content="2021-05-19T07:00:11.179Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ABOUT ME">
-<meta name="twitter:description" content="Rainy / 1996fuyumin96@gmail.comhangzhou, china  Social GitHub  Experience 2017/7 - Present: Tencent ZJ.QQ.Com  Education 2014/09 - 2018/06: Wenzhou Business College  Hobby basketball table tennis">
+<meta name="twitter:title" content="搜索">
+<meta name="twitter:description" content="坚持每天搞定一点点前端小问题">
     
     
       
@@ -36,7 +36,7 @@
       
     
     <!-- title -->
-    <title>ABOUT ME</title>
+    <title>搜索</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- persian styles -->
@@ -89,22 +89,15 @@
 
   <div class="content" itemprop="articleBody">
       
-          <h1 id="Rainy-1996"><a href="#Rainy-1996" class="headerlink" title="Rainy / 1996"></a>Rainy / 1996</h1><p><a href="https://www.fuyumin96@gmail.com" target="_blank" rel="noopener">fuyumin96@gmail.com</a><br>hangzhou, china </p>
-<h2 id="Social"><a href="#Social" class="headerlink" title="Social"></a>Social</h2><ul>
-<li><a href="https://github.com/JohnNashs" target="_blank" rel="noopener">GitHub</a></li>
-</ul>
-<h2 id="Experience"><a href="#Experience" class="headerlink" title="Experience"></a>Experience</h2><ul>
-<li>2017/7 - Present: Tencent ZJ.QQ.Com</li>
-</ul>
-<h2 id="Education"><a href="#Education" class="headerlink" title="Education"></a>Education</h2><ul>
-<li>2014/09 - 2018/06: Wenzhou Business College</li>
-</ul>
-<h2 id="Hobby"><a href="#Hobby" class="headerlink" title="Hobby"></a>Hobby</h2><ul>
-<li>basketball</li>
-<li>table tennis</li>
-</ul>
+        <section id="search">
+  <form>
+    <input type="text" class="search-input" id="search-input" placeholder="Search...">
+  </form>
+  <div id="search-result"></div>
+  <p class="search-no-result">No results found.</p>
+</section>
 
-        
+      
   </div>
 </article>
 
@@ -155,6 +148,43 @@
 
 <script src="/js/main.js"></script>
 <!-- search -->
+
+  <script src="/js/search.js"></script>
+  <script type="text/javascript">
+  $(function() {
+
+    var $inputArea = $("input#search-input");
+    var $resultArea = document.querySelector("div#search-result");
+
+    $inputArea.focus(function() {
+      var search_path = "search.xml";
+      if (search_path.length == 0) {
+        search_path = "search.xml";
+      }
+      var path = "/" + search_path;
+      searchFunc(path, 'search-input', 'search-result');
+    });
+
+    $inputArea.keydown(function(e) {
+      if (e.which == 13) {
+        e.preventDefault();
+      }
+    });
+
+    var observer = new MutationObserver(function(mutationsList, observer) {
+      if (mutationsList.length == 1) {
+        if (mutationsList[0].addedNodes.length) {
+          $(".search-no-result").hide();
+        } else if (mutationsList[0].removedNodes.length) {
+          $(".search-no-result").show(200);
+        }
+      }
+    });
+
+    observer.observe($resultArea, { childList: true });
+
+  });
+  </script>
 
 <!-- Google Analytics -->
 
