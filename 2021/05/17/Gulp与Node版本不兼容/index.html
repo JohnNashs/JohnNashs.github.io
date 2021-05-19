@@ -1,347 +1,159 @@
 <!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next gemini use-motion" lang="zh-Hans">
+<html lang=zh>
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Hexo, NexT">
-
-
-
-
-
-
-
-
-
-
-<meta name="description" content="问题描述：之前使用的node版本一直是v8.x.x，最近升级了node版本，为v14.16.0，然后在运行之前Gulp搭建的项目的时候，发现跑不起来，报错如下 123456789101112131415fs.js:45&amp;#125; = primordials;    ^ReferenceError: primordials is not defined    at fs.js:45:5    at">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <meta name="description" content="问题描述：之前使用的node版本一直是v8.x.x，最近升级了node版本，为v14.16.0，然后在运行之前Gulp搭建的项目的时候，发现跑不起来，报错如下 123456789101112131415fs.js:45&amp;#125; = primordials;    ^ReferenceError: primordials is not defined    at fs.js:45:5    at">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Gulp与Node版本不兼容">
 <meta property="og:url" content="http://yoursite.com/2021/05/17/Gulp与Node版本不兼容/index.html">
 <meta property="og:site_name" content="Rainy&#39;s Blog">
 <meta property="og:description" content="问题描述：之前使用的node版本一直是v8.x.x，最近升级了node版本，为v14.16.0，然后在运行之前Gulp搭建的项目的时候，发现跑不起来，报错如下 123456789101112131415fs.js:45&amp;#125; = primordials;    ^ReferenceError: primordials is not defined    at fs.js:45:5    at">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-05-17T09:29:37.868Z">
+<meta property="og:updated_time" content="2021-05-19T02:36:59.491Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Gulp与Node版本不兼容">
 <meta name="twitter:description" content="问题描述：之前使用的node版本一直是v8.x.x，最近升级了node版本，为v14.16.0，然后在运行之前Gulp搭建的项目的时候，发现跑不起来，报错如下 123456789101112131415fs.js:45&amp;#125; = primordials;    ^ReferenceError: primordials is not defined    at fs.js:45:5    at">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Gemini',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="http://yoursite.com/2021/05/17/Gulp与Node版本不兼容/">
-
-
-
-
-
-  <title>Gulp与Node版本不兼容 | Rainy's Blog</title>
-  
-
-
-
-
-
-
-
-
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Gulp与Node版本不兼容</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-  
+<body class="max-width mx-auto px3 ltr">
     
-  
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post " href="/2020/12/04/CheckVersion/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2021/05/17/Gulp与Node版本不兼容/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2021/05/17/Gulp与Node版本不兼容/&text=Gulp与Node版本不兼容"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2021/05/17/Gulp与Node版本不兼容/&title=Gulp与Node版本不兼容"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2021/05/17/Gulp与Node版本不兼容/&is_video=false&description=Gulp与Node版本不兼容"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Gulp与Node版本不兼容&body=Check out this article: http://yoursite.com/2021/05/17/Gulp与Node版本不兼容/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2021/05/17/Gulp与Node版本不兼容/&title=Gulp与Node版本不兼容"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2021/05/17/Gulp与Node版本不兼容/&title=Gulp与Node版本不兼容"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2021/05/17/Gulp与Node版本不兼容/&title=Gulp与Node版本不兼容"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2021/05/17/Gulp与Node版本不兼容/&title=Gulp与Node版本不兼容"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2021/05/17/Gulp与Node版本不兼容/&name=Gulp与Node版本不兼容&description=&lt;h2 id=&#34;问题描述：&#34;&gt;&lt;a href=&#34;#问题描述：&#34; class=&#34;headerlink&#34; title=&#34;问题描述：&#34;&gt;&lt;/a&gt;问题描述：&lt;/h2&gt;&lt;p&gt;之前使用的node版本一直是v8.x.x，最近升级了node版本，为v14.16.0，然后在运行之前Gulp搭建的项目的时候，发现跑不起来，报错如下&lt;/p&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;fs.js:45&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125; = primordials;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    ^&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;ReferenceError: primordials is not defined&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    at fs.js:45:5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    at req_ (/Users/fuyumin/Desktop/dz_project/gulp-project/hongchuan/node_modules/natives/index.js:143:24)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    at Object.req [as require] (/Users/fuyumin/Desktop/dz_project/gulp-project/hongchuan/node_modules/natives/index.js:55:10)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    at Object.&amp;lt;anonymous&amp;gt; (/Users/fuyumin/Desktop/dz_project/gulp-project/hongchuan/node_modules/graceful-fs/fs.js:1:37)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    at Module._compile (internal/modules/cjs/loader.js:1063:30)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    at Module.load (internal/modules/cjs/loader.js:928:32)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    at Function.Module._load (internal/modules/cjs/loader.js:769:14)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    at Module.require (internal/modules/cjs/loader.js:952:19)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    at require (internal/modules/cjs/helpers.js:88:18)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
+&lt;h2 id=&#34;原因：&#34;&gt;&lt;a href=&#34;#原因：&#34; class=&#34;headerlink&#34; title=&#34;原因：&#34;&gt;&lt;/a&gt;原因：&lt;/h2&gt;&lt;p&gt;我本地项目的Gulp版本如下&lt;/p&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;CLI version: 2.2.0&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;Local version: 3.9.1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
+&lt;p&gt;&lt;a href=&#34;mailto:Gulp@3.x.x&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Gulp@3.x.x&lt;/a&gt;与当前&lt;a href=&#34;mailto:Node@14.x.x&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Node@14.x.x&lt;/a&gt;版本不兼容，官网的建议是Node版本退回到v12.x.x以下（或者升级到&lt;a href=&#34;mailto:Gulp@4.x.x&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Gulp@4.x.x&lt;/a&gt;），那我哪能接受，毕竟我已经不靠Gulp吃饭了😄，于是开始寻找其他解决方式，终于，在我强大的英语阅读能力下，找到了一篇&lt;a href=&#34;https://ourcodeworld.com/articles/read/1188/how-to-solve-gulp-exception-reference-error-primordials-is-not-defined-error&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;一分钟解决你的gulp问题&lt;/a&gt;，不过现在好像打不开了，还是得靠自己&lt;/p&gt;
+&lt;h2 id=&#34;解决方式：&#34;&gt;&lt;a href=&#34;#解决方式：&#34; class=&#34;headerlink&#34; title=&#34;解决方式：&#34;&gt;&lt;/a&gt;解决方式：&lt;/h2&gt;&lt;p&gt;首先删除node依赖node_modules，删的渣都不要剩，然后在根目录下新建一个&lt;code&gt;npm-shrinkwrap.json&lt;/code&gt;文件，配置如下&lt;/p&gt;
+&lt;figure class=&#34;highlight json&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;attr&#34;&gt;&#34;dependencies&#34;&lt;/span&gt;: &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;attr&#34;&gt;&#34;graceful-fs&#34;&lt;/span&gt;: &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;attr&#34;&gt;&#34;version&#34;&lt;/span&gt;: &lt;span class=&#34;string&#34;&gt;&#34;4.2.2&#34;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2021/05/17/Gulp与Node版本不兼容/&t=Gulp与Node版本不兼容"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
 
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Rainy's Blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题描述："><span class="toc-number">1.</span> <span class="toc-text">问题描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原因："><span class="toc-number">2.</span> <span class="toc-text">原因：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方式："><span class="toc-number">3.</span> <span class="toc-text">解决方式：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#npm-shrinkwrap-json"><span class="toc-number">4.</span> <span class="toc-text">npm-shrinkwrap.json</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#END"><span class="toc-number">5.</span> <span class="toc-text">END!</span></a></li></ol>
+    </div>
+  </span>
 </div>
 
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
-            
-            关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            归档
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
-
-
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
     
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/05/17/Gulp与Node版本不兼容/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Rainy">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rainy's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
+    <div class="content index py4">
         
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Gulp与Node版本不兼容
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Rainy</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-05-17T09:04:13.000Z" itemprop="datePublished">2021-05-17</time>
         
-          <h1 class="post-title" itemprop="name headline">Gulp与Node版本不兼容</h1>
-        
+      
+    </div>
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-05-17T17:04:13+08:00">
-                2021-05-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/日常小bug集合/" itemprop="url" rel="index">
-                    <span itemprop="name">日常小bug集合</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
 
       
-      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/日常小bug集合/">日常小bug集合</a>
+    </div>
+
 
       
-        <h2 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h2><p>之前使用的node版本一直是v8.x.x，最近升级了node版本，为v14.16.0，然后在运行之前Gulp搭建的项目的时候，发现跑不起来，报错如下</p>
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h2><p>之前使用的node版本一直是v8.x.x，最近升级了node版本，为v14.16.0，然后在运行之前Gulp搭建的项目的时候，发现跑不起来，报错如下</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">fs.js:45</span><br><span class="line">&#125; = primordials;</span><br><span class="line">    ^</span><br><span class="line"></span><br><span class="line">ReferenceError: primordials is not defined</span><br><span class="line">    at fs.js:45:5</span><br><span class="line">    at req_ (/Users/fuyumin/Desktop/dz_project/gulp-project/hongchuan/node_modules/natives/index.js:143:24)</span><br><span class="line">    at Object.req [as require] (/Users/fuyumin/Desktop/dz_project/gulp-project/hongchuan/node_modules/natives/index.js:55:10)</span><br><span class="line">    at Object.&lt;anonymous&gt; (/Users/fuyumin/Desktop/dz_project/gulp-project/hongchuan/node_modules/graceful-fs/fs.js:1:37)</span><br><span class="line">    at Module._compile (internal/modules/cjs/loader.js:1063:30)</span><br><span class="line">    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)</span><br><span class="line">    at Module.load (internal/modules/cjs/loader.js:928:32)</span><br><span class="line">    at Function.Module._load (internal/modules/cjs/loader.js:769:14)</span><br><span class="line">    at Module.require (internal/modules/cjs/loader.js:952:19)</span><br><span class="line">    at require (internal/modules/cjs/helpers.js:88:18)</span><br></pre></td></tr></table></figure>
 
 <h2 id="原因："><a href="#原因：" class="headerlink" title="原因："></a>原因：</h2><p>我本地项目的Gulp版本如下</p>
@@ -349,377 +161,153 @@
 
 <p><a href="mailto:Gulp@3.x.x" target="_blank" rel="noopener">Gulp@3.x.x</a>与当前<a href="mailto:Node@14.x.x" target="_blank" rel="noopener">Node@14.x.x</a>版本不兼容，官网的建议是Node版本退回到v12.x.x以下（或者升级到<a href="mailto:Gulp@4.x.x" target="_blank" rel="noopener">Gulp@4.x.x</a>），那我哪能接受，毕竟我已经不靠Gulp吃饭了😄，于是开始寻找其他解决方式，终于，在我强大的英语阅读能力下，找到了一篇<a href="https://ourcodeworld.com/articles/read/1188/how-to-solve-gulp-exception-reference-error-primordials-is-not-defined-error" target="_blank" rel="noopener">一分钟解决你的gulp问题</a>，不过现在好像打不开了，还是得靠自己</p>
 <h2 id="解决方式："><a href="#解决方式：" class="headerlink" title="解决方式："></a>解决方式：</h2><p>首先删除node依赖node_modules，删的渣都不要剩，然后在根目录下新建一个<code>npm-shrinkwrap.json</code>文件，配置如下</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"dependencies"</span>: &#123;</span><br><span class="line">    <span class="attr">"graceful-fs"</span>: &#123;</span><br><span class="line">        <span class="attr">"version"</span>: <span class="string">"4.2.2"</span></span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"dependencies"</span>: &#123;</span><br><span class="line">    <span class="attr">"graceful-fs"</span>: &#123;</span><br><span class="line">        <span class="attr">"version"</span>: <span class="string">"4.2.2"</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>下一步，常规操作，<code>npm install</code>，然后启动Gulp项目，我的启动命令是<code>gulp serve</code>，你会发现项目神奇般的又跑起来了(其实也没啥神奇的)！</p>
 <h2 id="npm-shrinkwrap-json"><a href="#npm-shrinkwrap-json" class="headerlink" title="npm-shrinkwrap.json"></a>npm-shrinkwrap.json</h2><p>有关<code>npm-shrinkwrap.json</code>文件的作用，我给你们放这了，自己瞅瞅吧！</p>
 <p><a href="https://docs.npmjs.com/cli/v7/configuring-npm/package-lock-json" target="_blank" rel="noopener">package-lock.json | npm Docs</a><br><a href="https://juejin.cn/post/6844903797668462605" target="_blank" rel="noopener">对npm包精准控制之npm-shrinkwrap.json与package-lock.json</a></p>
 <h2 id="END"><a href="#END" class="headerlink" title="END!"></a>END!</h2>
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2020/12/04/CheckVersion/" rel="next" title="小程序检查更新">
-                <i class="fa fa-chevron-left"></i> 小程序检查更新
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
+</article>
 
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">Rainy</p>
-              <p class="site-description motion-element" itemprop="description">坚持每天搞定一点点前端小问题</p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">14</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-
-          </nav>
-
-          
-
-          
-
-          
-          
-
-          
-          
-
-          
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题描述："><span class="nav-number">1.</span> <span class="nav-text">问题描述：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原因："><span class="nav-number">2.</span> <span class="nav-text">原因：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方式："><span class="nav-number">3.</span> <span class="nav-text">解决方式：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#npm-shrinkwrap-json"><span class="nav-number">4.</span> <span class="nav-text">npm-shrinkwrap.json</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#END"><span class="nav-number">5.</span> <span class="nav-text">END!</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
 
 
         
-      </div>
-    </main>
+          <div id="footer-post-container">
+  <div id="footer-post">
 
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Rainy</span>
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </div>
 
-  
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题描述："><span class="toc-number">1.</span> <span class="toc-text">问题描述：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原因："><span class="toc-number">2.</span> <span class="toc-text">原因：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方式："><span class="toc-number">3.</span> <span class="toc-text">解决方式：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#npm-shrinkwrap-json"><span class="toc-number">4.</span> <span class="toc-text">npm-shrinkwrap.json</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#END"><span class="toc-number">5.</span> <span class="toc-text">END!</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2021/05/17/Gulp与Node版本不兼容/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2021/05/17/Gulp与Node版本不兼容/&text=Gulp与Node版本不兼容"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2021/05/17/Gulp与Node版本不兼容/&title=Gulp与Node版本不兼容"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2021/05/17/Gulp与Node版本不兼容/&is_video=false&description=Gulp与Node版本不兼容"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Gulp与Node版本不兼容&body=Check out this article: http://yoursite.com/2021/05/17/Gulp与Node版本不兼容/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2021/05/17/Gulp与Node版本不兼容/&title=Gulp与Node版本不兼容"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2021/05/17/Gulp与Node版本不兼容/&title=Gulp与Node版本不兼容"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2021/05/17/Gulp与Node版本不兼容/&title=Gulp与Node版本不兼容"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2021/05/17/Gulp与Node版本不兼容/&title=Gulp与Node版本不兼容"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2021/05/17/Gulp与Node版本不兼容/&name=Gulp与Node版本不兼容&description=&lt;h2 id=&#34;问题描述：&#34;&gt;&lt;a href=&#34;#问题描述：&#34; class=&#34;headerlink&#34; title=&#34;问题描述：&#34;&gt;&lt;/a&gt;问题描述：&lt;/h2&gt;&lt;p&gt;之前使用的node版本一直是v8.x.x，最近升级了node版本，为v14.16.0，然后在运行之前Gulp搭建的项目的时候，发现跑不起来，报错如下&lt;/p&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;fs.js:45&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125; = primordials;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    ^&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;ReferenceError: primordials is not defined&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    at fs.js:45:5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    at req_ (/Users/fuyumin/Desktop/dz_project/gulp-project/hongchuan/node_modules/natives/index.js:143:24)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    at Object.req [as require] (/Users/fuyumin/Desktop/dz_project/gulp-project/hongchuan/node_modules/natives/index.js:55:10)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    at Object.&amp;lt;anonymous&amp;gt; (/Users/fuyumin/Desktop/dz_project/gulp-project/hongchuan/node_modules/graceful-fs/fs.js:1:37)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    at Module._compile (internal/modules/cjs/loader.js:1063:30)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    at Module.load (internal/modules/cjs/loader.js:928:32)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    at Function.Module._load (internal/modules/cjs/loader.js:769:14)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    at Module.require (internal/modules/cjs/loader.js:952:19)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    at require (internal/modules/cjs/helpers.js:88:18)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&#34;原因：&#34;&gt;&lt;a href=&#34;#原因：&#34; class=&#34;headerlink&#34; title=&#34;原因：&#34;&gt;&lt;/a&gt;原因：&lt;/h2&gt;&lt;p&gt;我本地项目的Gulp版本如下&lt;/p&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;CLI version: 2.2.0&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;Local version: 3.9.1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;a href=&#34;mailto:Gulp@3.x.x&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Gulp@3.x.x&lt;/a&gt;与当前&lt;a href=&#34;mailto:Node@14.x.x&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Node@14.x.x&lt;/a&gt;版本不兼容，官网的建议是Node版本退回到v12.x.x以下（或者升级到&lt;a href=&#34;mailto:Gulp@4.x.x&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Gulp@4.x.x&lt;/a&gt;），那我哪能接受，毕竟我已经不靠Gulp吃饭了😄，于是开始寻找其他解决方式，终于，在我强大的英语阅读能力下，找到了一篇&lt;a href=&#34;https://ourcodeworld.com/articles/read/1188/how-to-solve-gulp-exception-reference-error-primordials-is-not-defined-error&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;一分钟解决你的gulp问题&lt;/a&gt;，不过现在好像打不开了，还是得靠自己&lt;/p&gt;
+&lt;h2 id=&#34;解决方式：&#34;&gt;&lt;a href=&#34;#解决方式：&#34; class=&#34;headerlink&#34; title=&#34;解决方式：&#34;&gt;&lt;/a&gt;解决方式：&lt;/h2&gt;&lt;p&gt;首先删除node依赖node_modules，删的渣都不要剩，然后在根目录下新建一个&lt;code&gt;npm-shrinkwrap.json&lt;/code&gt;文件，配置如下&lt;/p&gt;
+&lt;figure class=&#34;highlight json&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;attr&#34;&gt;&#34;dependencies&#34;&lt;/span&gt;: &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;attr&#34;&gt;&#34;graceful-fs&#34;&lt;/span&gt;: &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;attr&#34;&gt;&#34;version&#34;&lt;/span&gt;: &lt;span class=&#34;string&#34;&gt;&#34;4.2.2&#34;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2021/05/17/Gulp与Node版本不兼容/&t=Gulp与Node版本不兼容"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
 </div>
 
-
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
-
-
-
-
         
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
     
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
-
-    
-
+    2016-2021
+    Rainy
   </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
 
   
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
   
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
 
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
 
 </body>
 </html>

@@ -1,85 +1,12 @@
 <!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next gemini use-motion" lang="zh-Hans">
+<html lang=zh>
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Hexo, NexT">
-
-
-
-
-
-
-
-
-
-
-<meta name="description" content="总结一下vue3.0带来的部分新特性  setup() ref() reactive() isRef() toRefs() computed() watch() LifeCycle Hooks(新的生命周期) Template refs globalProperties Suspense  vue2与vue3的对比 对TypeScript支持不友好（所有属性都放在了this对象上，难以推到组件的数">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <meta name="description" content="总结一下vue3.0带来的部分新特性  setup() ref() reactive() isRef() toRefs() computed() watch() LifeCycle Hooks(新的生命周期) Template refs globalProperties Suspense  vue2与vue3的对比 对TypeScript支持不友好（所有属性都放在了this对象上，难以推到组件的数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue3新特性">
 <meta property="og:url" content="http://yoursite.com/2020/11/04/Vue2VsVue3/index.html">
@@ -90,258 +17,168 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue3新特性">
 <meta name="twitter:description" content="总结一下vue3.0带来的部分新特性  setup() ref() reactive() isRef() toRefs() computed() watch() LifeCycle Hooks(新的生命周期) Template refs globalProperties Suspense  vue2与vue3的对比 对TypeScript支持不友好（所有属性都放在了this对象上，难以推到组件的数">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Gemini',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="http://yoursite.com/2020/11/04/Vue2VsVue3/">
-
-
-
-
-
-  <title>vue3新特性 | Rainy's Blog</title>
-  
-
-
-
-
-
-
-
-
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>vue3新特性</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-  
+<body class="max-width mx-auto px3 ltr">
     
-  
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post " href="/2020/11/05/Interview/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post " href="/2020/10/29/LoadImage/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/11/04/Vue2VsVue3/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/11/04/Vue2VsVue3/&text=vue3新特性"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/11/04/Vue2VsVue3/&title=vue3新特性"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/11/04/Vue2VsVue3/&is_video=false&description=vue3新特性"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=vue3新特性&body=Check out this article: http://yoursite.com/2020/11/04/Vue2VsVue3/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/11/04/Vue2VsVue3/&title=vue3新特性"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/11/04/Vue2VsVue3/&title=vue3新特性"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/11/04/Vue2VsVue3/&title=vue3新特性"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/11/04/Vue2VsVue3/&title=vue3新特性"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/11/04/Vue2VsVue3/&name=vue3新特性&description=&lt;p&gt;总结一下vue3.0带来的部分新特性&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;setup()&lt;/li&gt;
+&lt;li&gt;ref()&lt;/li&gt;
+&lt;li&gt;reactive()&lt;/li&gt;
+&lt;li&gt;isRef()&lt;/li&gt;
+&lt;li&gt;toRefs()&lt;/li&gt;
+&lt;li&gt;computed()&lt;/li&gt;
+&lt;li&gt;watch()&lt;/li&gt;
+&lt;li&gt;LifeCycle Hooks(新的生命周期)&lt;/li&gt;
+&lt;li&gt;Template refs&lt;/li&gt;
+&lt;li&gt;globalProperties&lt;/li&gt;
+&lt;li&gt;Suspense&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;vue2与vue3的对比&#34;&gt;&lt;a href=&#34;#vue2与vue3的对比&#34; class=&#34;headerlink&#34; title=&#34;vue2与vue3的对比&#34;&gt;&lt;/a&gt;vue2与vue3的对比&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;对TypeScript支持不友好（所有属性都放在了this对象上，难以推到组件的数据类型）&lt;/li&gt;
+&lt;li&gt;大量的Api挂载在Vue对象的原型上，难以实现TreeShaking&lt;/li&gt;
+&lt;li&gt;架构层面对跨平台dom渲染开发支持不友好&lt;/li&gt;
+&lt;li&gt;Composition Api 受ReactHock启发&lt;/li&gt;
+&lt;li&gt;更方便的支持了jsx&lt;/li&gt;
+&lt;li&gt;vue3的Template支持多个根标签， vue2不支持&lt;/li&gt;
+&lt;li&gt;对虚拟DOM进行了重写，对模板的编译进行了优化操作&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;一、setup函数&#34;&gt;&lt;a href=&#34;#一、setup函数&#34; class=&#34;headerlink&#34; title=&#34;一、setup函数&#34;&gt;&lt;/a&gt;一、setup函数&lt;/h2&gt;&lt;p&gt;setup()函数是vue3中，专门为为组件提供的新属性。它为我们使用vue3的Composition Api新特性提供了统一的入口，setup函数会在beforecreate之后、create之前执行，vue3也是取消了这两个钩子，统一用setup代替，该函数相当于一个生命周期函数，vue中过去的data，methods，watch等全部都用对应的新增api写在setup()函数中&lt;/p&gt;
+&lt;figure class=&#34;highlight js&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;setup(props, context) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  context.attrs&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  context.slots&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  context.parent&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  context.root&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  comtext.emit&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  comtext.refs&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
+&lt;ul&gt;
+&lt;li&gt;props: 用来接收props数据&lt;/li&gt;
+&lt;li&gt;context用来定义上下文，上下文对象中包含了一些有用的属性，这些属性在vue2.x中需要通过this才能访问到，在setup函数中无法访问到this，是个undefinded&lt;/li&gt;
+&lt;li&gt;返回值：return{}, 返回响应式数据，模板中需要使用的函数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;二、reactive函数&#34;&gt;&lt;a href=&#34;#二、reactive函数&#34; class=&#34;headerlink&#34; title=&#34;二、reactive函数&#34;&gt;&lt;/a&gt;二、reactive函数&lt;/h2&gt;&lt;p&gt;reactive()函数接收一个普通对象，返回一个响应式的数据对象，想要使用创建的响应式数据也很简单，创建出来之后，在setup()中return出去，直接在template中调用即可&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2020/11/04/Vue2VsVue3/&t=vue3新特性"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Rainy's Blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#vue2与vue3的对比"><span class="toc-number">1.</span> <span class="toc-text">vue2与vue3的对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一、setup函数"><span class="toc-number">2.</span> <span class="toc-text">一、setup函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、reactive函数"><span class="toc-number">3.</span> <span class="toc-text">二、reactive函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、ref-函数"><span class="toc-number">4.</span> <span class="toc-text">三、ref()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、isRef-函数"><span class="toc-number">5.</span> <span class="toc-text">四、isRef()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、toRefs-函数"><span class="toc-number">6.</span> <span class="toc-text">五、toRefs()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、computed"><span class="toc-number">7.</span> <span class="toc-text">六、computed()</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-创建只读的计算属性"><span class="toc-number">7.1.</span> <span class="toc-text">6.1 创建只读的计算属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-通过set-、get-方法创建一个可读可写的计算属性"><span class="toc-number">7.2.</span> <span class="toc-text">6.2 通过set()、get()方法创建一个可读可写的计算属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、watch-函数"><span class="toc-number">8.</span> <span class="toc-text">七、watch()函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1监听用reactive声明的数据源"><span class="toc-number">8.1.</span> <span class="toc-text">7.1监听用reactive声明的数据源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2监听用ref声明的数据源"><span class="toc-number">8.2.</span> <span class="toc-text">7.2监听用ref声明的数据源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-3同时监听多个值"><span class="toc-number">8.3.</span> <span class="toc-text">7.3同时监听多个值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-4-stop停止监听"><span class="toc-number">8.4.</span> <span class="toc-text">7.4 stop停止监听</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八、lifeCycle-Hooks（新的生命后期）"><span class="toc-number">9.</span> <span class="toc-text">八、lifeCycle Hooks（新的生命后期）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#九、Template-refs"><span class="toc-number">10.</span> <span class="toc-text">九、Template refs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十、vue的全局配置"><span class="toc-number">11.</span> <span class="toc-text">十、vue的全局配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十一、Suspense组件"><span class="toc-number">12.</span> <span class="toc-text">十一、Suspense组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十二、vue3-x完整组件模板结构"><span class="toc-number">13.</span> <span class="toc-text">十二、vue3.x完整组件模板结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vue3的生态"><span class="toc-number">14.</span> <span class="toc-text">vue3的生态</span></a></li></ol>
+    </div>
+  </span>
 </div>
 
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
-            
-            关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            归档
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
-
-
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
     
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/04/Vue2VsVue3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Rainy">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Rainy's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
+    <div class="content index py4">
         
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        vue3新特性
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Rainy</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-11-03T16:00:00.000Z" itemprop="datePublished">2020-11-04</time>
         
-          <h1 class="post-title" itemprop="name headline">vue3新特性</h1>
-        
+      
+    </div>
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-04T00:00:00+08:00">
-                2020-11-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/面试/" itemprop="url" rel="index">
-                    <span itemprop="name">面试</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
 
       
-      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/面试/">面试</a>
+    </div>
+
 
       
-        <p>总结一下vue3.0带来的部分新特性</p>
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>总结一下vue3.0带来的部分新特性</p>
 <ol>
 <li>setup()</li>
 <li>ref()</li>
@@ -454,375 +291,170 @@
 <li>element-plus</li>
 </ul>
 
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2020/10/29/LoadImage/" rel="next" title="加载图片">
-                <i class="fa fa-chevron-left"></i> 加载图片
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/11/05/Interview/" rel="prev" title="面试相关">
-                面试相关 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
+</article>
 
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">Rainy</p>
-              <p class="site-description motion-element" itemprop="description">坚持每天搞定一点点前端小问题</p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">14</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-
-          </nav>
-
-          
-
-          
-
-          
-          
-
-          
-          
-
-          
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#vue2与vue3的对比"><span class="nav-number">1.</span> <span class="nav-text">vue2与vue3的对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一、setup函数"><span class="nav-number">2.</span> <span class="nav-text">一、setup函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、reactive函数"><span class="nav-number">3.</span> <span class="nav-text">二、reactive函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、ref-函数"><span class="nav-number">4.</span> <span class="nav-text">三、ref()函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、isRef-函数"><span class="nav-number">5.</span> <span class="nav-text">四、isRef()函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、toRefs-函数"><span class="nav-number">6.</span> <span class="nav-text">五、toRefs()函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、computed"><span class="nav-number">7.</span> <span class="nav-text">六、computed()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-创建只读的计算属性"><span class="nav-number">7.1.</span> <span class="nav-text">6.1 创建只读的计算属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-通过set-、get-方法创建一个可读可写的计算属性"><span class="nav-number">7.2.</span> <span class="nav-text">6.2 通过set()、get()方法创建一个可读可写的计算属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七、watch-函数"><span class="nav-number">8.</span> <span class="nav-text">七、watch()函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1监听用reactive声明的数据源"><span class="nav-number">8.1.</span> <span class="nav-text">7.1监听用reactive声明的数据源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2监听用ref声明的数据源"><span class="nav-number">8.2.</span> <span class="nav-text">7.2监听用ref声明的数据源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-3同时监听多个值"><span class="nav-number">8.3.</span> <span class="nav-text">7.3同时监听多个值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-4-stop停止监听"><span class="nav-number">8.4.</span> <span class="nav-text">7.4 stop停止监听</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#八、lifeCycle-Hooks（新的生命后期）"><span class="nav-number">9.</span> <span class="nav-text">八、lifeCycle Hooks（新的生命后期）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#九、Template-refs"><span class="nav-number">10.</span> <span class="nav-text">九、Template refs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#十、vue的全局配置"><span class="nav-number">11.</span> <span class="nav-text">十、vue的全局配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#十一、Suspense组件"><span class="nav-number">12.</span> <span class="nav-text">十一、Suspense组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#十二、vue3-x完整组件模板结构"><span class="nav-number">13.</span> <span class="nav-text">十二、vue3.x完整组件模板结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vue3的生态"><span class="nav-number">14.</span> <span class="nav-text">vue3的生态</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
 
 
         
-      </div>
-    </main>
+          <div id="footer-post-container">
+  <div id="footer-post">
 
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Rainy</span>
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </div>
 
-  
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#vue2与vue3的对比"><span class="toc-number">1.</span> <span class="toc-text">vue2与vue3的对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一、setup函数"><span class="toc-number">2.</span> <span class="toc-text">一、setup函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、reactive函数"><span class="toc-number">3.</span> <span class="toc-text">二、reactive函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、ref-函数"><span class="toc-number">4.</span> <span class="toc-text">三、ref()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、isRef-函数"><span class="toc-number">5.</span> <span class="toc-text">四、isRef()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、toRefs-函数"><span class="toc-number">6.</span> <span class="toc-text">五、toRefs()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、computed"><span class="toc-number">7.</span> <span class="toc-text">六、computed()</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-创建只读的计算属性"><span class="toc-number">7.1.</span> <span class="toc-text">6.1 创建只读的计算属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-通过set-、get-方法创建一个可读可写的计算属性"><span class="toc-number">7.2.</span> <span class="toc-text">6.2 通过set()、get()方法创建一个可读可写的计算属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、watch-函数"><span class="toc-number">8.</span> <span class="toc-text">七、watch()函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1监听用reactive声明的数据源"><span class="toc-number">8.1.</span> <span class="toc-text">7.1监听用reactive声明的数据源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2监听用ref声明的数据源"><span class="toc-number">8.2.</span> <span class="toc-text">7.2监听用ref声明的数据源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-3同时监听多个值"><span class="toc-number">8.3.</span> <span class="toc-text">7.3同时监听多个值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-4-stop停止监听"><span class="toc-number">8.4.</span> <span class="toc-text">7.4 stop停止监听</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八、lifeCycle-Hooks（新的生命后期）"><span class="toc-number">9.</span> <span class="toc-text">八、lifeCycle Hooks（新的生命后期）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#九、Template-refs"><span class="toc-number">10.</span> <span class="toc-text">九、Template refs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十、vue的全局配置"><span class="toc-number">11.</span> <span class="toc-text">十、vue的全局配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十一、Suspense组件"><span class="toc-number">12.</span> <span class="toc-text">十一、Suspense组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十二、vue3-x完整组件模板结构"><span class="toc-number">13.</span> <span class="toc-text">十二、vue3.x完整组件模板结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vue3的生态"><span class="toc-number">14.</span> <span class="toc-text">vue3的生态</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/11/04/Vue2VsVue3/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/11/04/Vue2VsVue3/&text=vue3新特性"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/11/04/Vue2VsVue3/&title=vue3新特性"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/11/04/Vue2VsVue3/&is_video=false&description=vue3新特性"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=vue3新特性&body=Check out this article: http://yoursite.com/2020/11/04/Vue2VsVue3/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/11/04/Vue2VsVue3/&title=vue3新特性"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/11/04/Vue2VsVue3/&title=vue3新特性"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/11/04/Vue2VsVue3/&title=vue3新特性"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/11/04/Vue2VsVue3/&title=vue3新特性"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/11/04/Vue2VsVue3/&name=vue3新特性&description=&lt;p&gt;总结一下vue3.0带来的部分新特性&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;setup()&lt;/li&gt;
+&lt;li&gt;ref()&lt;/li&gt;
+&lt;li&gt;reactive()&lt;/li&gt;
+&lt;li&gt;isRef()&lt;/li&gt;
+&lt;li&gt;toRefs()&lt;/li&gt;
+&lt;li&gt;computed()&lt;/li&gt;
+&lt;li&gt;watch()&lt;/li&gt;
+&lt;li&gt;LifeCycle Hooks(新的生命周期)&lt;/li&gt;
+&lt;li&gt;Template refs&lt;/li&gt;
+&lt;li&gt;globalProperties&lt;/li&gt;
+&lt;li&gt;Suspense&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;vue2与vue3的对比&#34;&gt;&lt;a href=&#34;#vue2与vue3的对比&#34; class=&#34;headerlink&#34; title=&#34;vue2与vue3的对比&#34;&gt;&lt;/a&gt;vue2与vue3的对比&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;对TypeScript支持不友好（所有属性都放在了this对象上，难以推到组件的数据类型）&lt;/li&gt;
+&lt;li&gt;大量的Api挂载在Vue对象的原型上，难以实现TreeShaking&lt;/li&gt;
+&lt;li&gt;架构层面对跨平台dom渲染开发支持不友好&lt;/li&gt;
+&lt;li&gt;Composition Api 受ReactHock启发&lt;/li&gt;
+&lt;li&gt;更方便的支持了jsx&lt;/li&gt;
+&lt;li&gt;vue3的Template支持多个根标签， vue2不支持&lt;/li&gt;
+&lt;li&gt;对虚拟DOM进行了重写，对模板的编译进行了优化操作&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;一、setup函数&#34;&gt;&lt;a href=&#34;#一、setup函数&#34; class=&#34;headerlink&#34; title=&#34;一、setup函数&#34;&gt;&lt;/a&gt;一、setup函数&lt;/h2&gt;&lt;p&gt;setup()函数是vue3中，专门为为组件提供的新属性。它为我们使用vue3的Composition Api新特性提供了统一的入口，setup函数会在beforecreate之后、create之前执行，vue3也是取消了这两个钩子，统一用setup代替，该函数相当于一个生命周期函数，vue中过去的data，methods，watch等全部都用对应的新增api写在setup()函数中&lt;/p&gt;
+&lt;figure class=&#34;highlight js&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;setup(props, context) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  context.attrs&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  context.slots&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  context.parent&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  context.root&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  comtext.emit&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  comtext.refs&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+&lt;li&gt;props: 用来接收props数据&lt;/li&gt;
+&lt;li&gt;context用来定义上下文，上下文对象中包含了一些有用的属性，这些属性在vue2.x中需要通过this才能访问到，在setup函数中无法访问到this，是个undefinded&lt;/li&gt;
+&lt;li&gt;返回值：return{}, 返回响应式数据，模板中需要使用的函数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;二、reactive函数&#34;&gt;&lt;a href=&#34;#二、reactive函数&#34; class=&#34;headerlink&#34; title=&#34;二、reactive函数&#34;&gt;&lt;/a&gt;二、reactive函数&lt;/h2&gt;&lt;p&gt;reactive()函数接收一个普通对象，返回一个响应式的数据对象，想要使用创建的响应式数据也很简单，创建出来之后，在setup()中return出去，直接在template中调用即可&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2020/11/04/Vue2VsVue3/&t=vue3新特性"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
 </div>
 
-
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
-
-
-
-
         
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
     
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
-
-    
-
+    2016-2021
+    Rainy
   </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects_url">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
 
   
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
   
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
 
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
 
 </body>
 </html>
