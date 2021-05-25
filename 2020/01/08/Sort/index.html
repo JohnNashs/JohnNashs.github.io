@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <meta name="description" content="排序算法的设计与实现这是一个可视化的排序展示,支持冒泡、插入和选择排序，具体使用先 随机添加40个，然后点排序，就可以看到可视化的效果。推荐一下，HTML5 Canvas Demo:Sorting Algorithms,这里还有个可视化的排序博客，各大排序算法的实现都栩栩如生。 JavaScript写排序算法主要是参数问题，比如JavaScript算法函数可以扔给Array原型：Array.pro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript版各大排序算法">
+<meta property="og:url" content="http://yoursite.com/2020/01/08/Sort/index.html">
+<meta property="og:site_name" content="Rainy&#39;s Blog">
+<meta property="og:description" content="排序算法的设计与实现这是一个可视化的排序展示,支持冒泡、插入和选择排序，具体使用先 随机添加40个，然后点排序，就可以看到可视化的效果。推荐一下，HTML5 Canvas Demo:Sorting Algorithms,这里还有个可视化的排序博客，各大排序算法的实现都栩栩如生。 JavaScript写排序算法主要是参数问题，比如JavaScript算法函数可以扔给Array原型：Array.pro">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2021-05-17T08:54:50.946Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript版各大排序算法">
+<meta name="twitter:description" content="排序算法的设计与实现这是一个可视化的排序展示,支持冒泡、插入和选择排序，具体使用先 随机添加40个，然后点排序，就可以看到可视化的效果。推荐一下，HTML5 Canvas Demo:Sorting Algorithms,这里还有个可视化的排序博客，各大排序算法的实现都栩栩如生。 JavaScript写排序算法主要是参数问题，比如JavaScript算法函数可以扔给Array原型：Array.pro">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>JavaScript版各大排序算法</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post " href="/2020/10/27/PxToRem&Autoprefixer/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post " href="/2020/01/02/Year2019/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/01/08/Sort/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/01/08/Sort/&text=JavaScript版各大排序算法"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/01/08/Sort/&title=JavaScript版各大排序算法"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/01/08/Sort/&is_video=false&description=JavaScript版各大排序算法"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=JavaScript版各大排序算法&body=Check out this article: http://yoursite.com/2020/01/08/Sort/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/01/08/Sort/&title=JavaScript版各大排序算法"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/01/08/Sort/&title=JavaScript版各大排序算法"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/01/08/Sort/&title=JavaScript版各大排序算法"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/01/08/Sort/&title=JavaScript版各大排序算法"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/01/08/Sort/&name=JavaScript版各大排序算法&description=&lt;h1 id=&#34;排序算法的设计与实现&#34;&gt;&lt;a href=&#34;#排序算法的设计与实现&#34; class=&#34;headerlink&#34; title=&#34;排序算法的设计与实现&#34;&gt;&lt;/a&gt;排序算法的设计与实现&lt;/h1&gt;&lt;p&gt;这是一个&lt;a href=&#34;https://songjinzhong.github.io/BaiDu_IFE/stage2/task19/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;可视化的排序展示&lt;/a&gt;,支持冒泡、插入和选择排序，具体使用先 随机添加40个，然后点排序，就可以看到可视化的效果。&lt;br&gt;推荐一下，&lt;a href=&#34;http://math.hws.edu/eck/jsdemo/sortlab.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;HTML5 Canvas Demo:Sorting Algorithms&lt;/a&gt;,这里还有个可视化的&lt;a href=&#34;https://coolshell.cn/articles/3933.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;排序博客&lt;/a&gt;，各大排序算法的实现都栩栩如生。&lt;/p&gt;
+&lt;p&gt;JavaScript写排序算法主要是参数问题，比如JavaScript算法函数可以扔给Array原型：&lt;code&gt;Array.prototype.sort = function&lt;/code&gt;，也可以直接写个函数带参数：&lt;code&gt;function sort(array) {}&lt;/code&gt;，哪种方法都一样，需要注意的是兼容性问题，如果可以考虑所有可遍历对象都能排序（比如argument），才大法好！&lt;br&gt;下面的排序都是从小到大的排序：&lt;/p&gt;
+&lt;h2 id=&#34;插入排序&#34;&gt;&lt;a href=&#34;#插入排序&#34; class=&#34;headerlink&#34; title=&#34;插入排序&#34;&gt;&lt;/a&gt;插入排序&lt;/h2&gt;&lt;p&gt;插入排序是一种基本排序，它的基本思路是构建有序序列，对于未排序的数据，在已排序的基础上，从右向左（或者二分查找）选择位置插入。&lt;/p&gt;
+&lt;figure class=&#34;highlight js&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;function&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;insert_sort&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;input&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; i, j, temp;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;keyword&#34;&gt;for&lt;/span&gt;(i = &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;; i &amp;lt; input.length; i++)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    temp = input[i];&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;for&lt;/span&gt;(j = i&lt;span class=&#34;number&#34;&gt;-1&lt;/span&gt;; j &amp;gt;= &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt; &amp;amp;&amp;amp; input[j] &amp;gt; temp; j--) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;      input[j+&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;] = input[j];&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    input[j+&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;] = temp;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; input;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;如果以比较次数和移动次数来衡量算法的效率，最好的情况下，比较n-1次，移动0次，最坏情况，比较n&lt;em&gt;(n-1)/2次，移动n&lt;/em&gt;(n-1)/2次。&lt;/p&gt;
+&lt;h2 id=&#34;二分插入排序&#34;&gt;&lt;a href=&#34;#二分插入排序&#34; class=&#34;headerlink&#34; title=&#34;二分插入排序&#34;&gt;&lt;/a&gt;二分插入排序&lt;/h2&gt;&lt;p&gt;思路基本与插入算法相同，只是在查找插入位置的时候，不是依次查找，而是采用二分法：&lt;/p&gt;
+&lt;figure class=&#34;highlight js&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;function&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;bin_insert_sort&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;input&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; i, j, low, mid, high, temp;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;keyword&#34;&gt;for&lt;/span&gt;(i = &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;; i &amp;lt; input.length; i++) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    temp = input[i];&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    high = i - &lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    low = &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;while&lt;/span&gt;(low &amp;lt;= high) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;      min = &lt;span class=&#34;built_in&#34;&gt;parseInt&lt;/span&gt;((low + high)/&lt;span class=&#34;number&#34;&gt;2&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;      &lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt;(temp &amp;lt; input[mid]) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        high = mid - &lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;      &amp;#125;&lt;span class=&#34;keyword&#34;&gt;else&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        low = mid + &lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;      &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;comment&#34;&gt;// low的位置就是要插入的位置&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;for&lt;/span&gt;(j = i - &lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;; j &amp;gt;= low; j--) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;      input[j+&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;] = input[j]&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    input[low] = temp;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; input;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2020/01/08/Sort/&t=JavaScript版各大排序算法"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#排序算法的设计与实现"><span class="toc-number">1.</span> <span class="toc-text">排序算法的设计与实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#插入排序"><span class="toc-number">1.1.</span> <span class="toc-text">插入排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二分插入排序"><span class="toc-number">1.2.</span> <span class="toc-text">二分插入排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#希尔排序"><span class="toc-number">1.3.</span> <span class="toc-text">希尔排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#选择排序"><span class="toc-number">1.4.</span> <span class="toc-text">选择排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#冒泡排序"><span class="toc-number">1.5.</span> <span class="toc-text">冒泡排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#快排"><span class="toc-number">1.6.</span> <span class="toc-text">快排</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        JavaScript版各大排序算法
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Rainy</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-01-07T16:00:00.000Z" itemprop="datePublished">2020-01-08</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/算法/">算法</a>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="排序算法的设计与实现"><a href="#排序算法的设计与实现" class="headerlink" title="排序算法的设计与实现"></a>排序算法的设计与实现</h1><p>这是一个<a href="https://songjinzhong.github.io/BaiDu_IFE/stage2/task19/" target="_blank" rel="noopener">可视化的排序展示</a>,支持冒泡、插入和选择排序，具体使用先 随机添加40个，然后点排序，就可以看到可视化的效果。<br>推荐一下，<a href="http://math.hws.edu/eck/jsdemo/sortlab.html" target="_blank" rel="noopener">HTML5 Canvas Demo:Sorting Algorithms</a>,这里还有个可视化的<a href="https://coolshell.cn/articles/3933.html" target="_blank" rel="noopener">排序博客</a>，各大排序算法的实现都栩栩如生。</p>
+<p>JavaScript写排序算法主要是参数问题，比如JavaScript算法函数可以扔给Array原型：<code>Array.prototype.sort = function</code>，也可以直接写个函数带参数：<code>function sort(array) {}</code>，哪种方法都一样，需要注意的是兼容性问题，如果可以考虑所有可遍历对象都能排序（比如argument），才大法好！<br>下面的排序都是从小到大的排序：</p>
+<h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><p>插入排序是一种基本排序，它的基本思路是构建有序序列，对于未排序的数据，在已排序的基础上，从右向左（或者二分查找）选择位置插入。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">insert_sort</span>(<span class="params">input</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> i, j, temp;</span><br><span class="line">  <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; input.length; i++)&#123;</span><br><span class="line">    temp = input[i];</span><br><span class="line">    <span class="keyword">for</span>(j = i<span class="number">-1</span>; j &gt;= <span class="number">0</span> &amp;&amp; input[j] &gt; temp; j--) &#123;</span><br><span class="line">      input[j+<span class="number">1</span>] = input[j];</span><br><span class="line">    &#125;</span><br><span class="line">    input[j+<span class="number">1</span>] = temp;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> input;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果以比较次数和移动次数来衡量算法的效率，最好的情况下，比较n-1次，移动0次，最坏情况，比较n<em>(n-1)/2次，移动n</em>(n-1)/2次。</p>
+<h2 id="二分插入排序"><a href="#二分插入排序" class="headerlink" title="二分插入排序"></a>二分插入排序</h2><p>思路基本与插入算法相同，只是在查找插入位置的时候，不是依次查找，而是采用二分法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bin_insert_sort</span>(<span class="params">input</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> i, j, low, mid, high, temp;</span><br><span class="line">  <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; input.length; i++) &#123;</span><br><span class="line">    temp = input[i];</span><br><span class="line">    high = i - <span class="number">1</span>;</span><br><span class="line">    low = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(low &lt;= high) &#123;</span><br><span class="line">      min = <span class="built_in">parseInt</span>((low + high)/<span class="number">2</span>);</span><br><span class="line">      <span class="keyword">if</span>(temp &lt; input[mid]) &#123;</span><br><span class="line">        high = mid - <span class="number">1</span>;</span><br><span class="line">      &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        low = mid + <span class="number">1</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// low的位置就是要插入的位置</span></span><br><span class="line">    <span class="keyword">for</span>(j = i - <span class="number">1</span>; j &gt;= low; j--) &#123;</span><br><span class="line">      input[j+<span class="number">1</span>] = input[j]</span><br><span class="line">    &#125;</span><br><span class="line">    input[low] = temp;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> input;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h2><p>希尔排序其实是加强版的插入排序，就是在原先的插入排序的基础上，加入了步长，原先插入排序的步长是1，而且步长不同，效率也有差异，选择一个合适的步长也很重要。而且，希尔排序的最后一步，也必定是步长为1的插入排序，只不过此时整个排序已经基本稳定。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shell_sort</span>(<span class="params">input</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> gap, i, j, temp;</span><br><span class="line">  gap = input.length &gt;&gt; <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span>(gap &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">for</span>(i = gap; i &lt; input.length; i++) &#123;</span><br><span class="line">      temp = input[i];</span><br><span class="line">      <span class="keyword">for</span>(j = i - gap;j &gt;= <span class="number">0</span> &amp;&amp; input[j] &gt; temp; j -= gap) &#123;</span><br><span class="line">        input[j + gap] = input[j];</span><br><span class="line">      &#125;</span><br><span class="line">      input[j + gap] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">    gap = gap &gt;&gt; <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> input;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><p>选择排序的工作原理：首先在未排序序列中找到最小（大）元素，存放在排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">select_sort</span>(<span class="params">input</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> i, j, min, temp;</span><br><span class="line">  <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; input.length - <span class="number">1</span>; i++) &#123;</span><br><span class="line">    min = i;</span><br><span class="line">    <span class="keyword">for</span>(j = i + <span class="number">1</span>; j &lt; input.length; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span>(input[min] &gt; input[j]) &#123;</span><br><span class="line">        min = j;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    temp = input[min];</span><br><span class="line">    input[min] = input[i];</span><br><span class="line">    input[i] = temp;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> input;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>选择排序在最好的情况下和最坏的情况下，比较次数是一样的，都是n*(n-1)/2;</p>
+<h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><p>冒泡排序的原理：对于待排序列，它会遍历多次，每次都会比较相邻的两个元素，若顺序相反，即交换他们。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bubble_sort</span>(<span class="params">input</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> i, j, temp, flag;</span><br><span class="line">  <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; input.length - <span class="number">1</span>; i++) &#123;</span><br><span class="line">    flag = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">for</span>(j = <span class="number">0</span>; j &lt; input.length - i; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (input[j] &gt; input[j + <span class="number">1</span>]) &#123;</span><br><span class="line">        temp = input[j];</span><br><span class="line">        input[j] = input[j + <span class="number">1</span>];</span><br><span class="line">        input[j + <span class="number">1</span>] = temp;</span><br><span class="line">        flag = <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (flag) &#123;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> input;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>有flag时，最好的情况比较n-1次，移动0次，最坏情况，比较n<em>(n-1)/2次，交换n</em>(n-1)/2</p>
+<h2 id="快排"><a href="#快排" class="headerlink" title="快排"></a>快排</h2><p>快排的基本思路就是选择一个元素，然后按照与这个元素的比较，将大于这个元素的都拿到右边，小于这个元素的都拿到左边，并找到这个元素的位置这个元素的左右两边递归。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">quick_sort</span> (<span class="params">input</span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">sort</span>(<span class="params">start, end</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (start &gt;= end) &#123;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> mid = partition(start, end);</span><br><span class="line">    sort(start, mid - <span class="number">1</span>);</span><br><span class="line">    sort(min + <span class="number">1</span>, end);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">partition</span>(<span class="params">start, end</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> left = start, right = end, key = input[start], temp;</span><br><span class="line">    <span class="keyword">while</span>(left &lt; right) &#123;</span><br><span class="line">      <span class="keyword">while</span>(left &lt; right &amp;&amp; input[right] &gt;= key) &#123;</span><br><span class="line">        right--;</span><br><span class="line">      &#125;</span><br><span class="line">      input[left] = input[right];</span><br><span class="line">      <span class="keyword">while</span>(left &lt; right &amp;&amp; input[left] &lt;= key)&#123;</span><br><span class="line">        left++</span><br><span class="line">      &#125;</span><br><span class="line">      input[right] = input[left];</span><br><span class="line">    &#125;</span><br><span class="line">    input[left] = key;</span><br><span class="line">    <span class="keyword">return</span> left;</span><br><span class="line">  &#125;</span><br><span class="line">  sort(<span class="number">0</span>, input.length - <span class="number">1</span>);</span><br><span class="line">  <span class="keyword">return</span> input;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a href="http://www.ruanyifeng.com/blog/2011/04/quicksort_in_javascript.html" target="_blank" rel="noopener">关于快排的详解</a></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#排序算法的设计与实现"><span class="toc-number">1.</span> <span class="toc-text">排序算法的设计与实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#插入排序"><span class="toc-number">1.1.</span> <span class="toc-text">插入排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二分插入排序"><span class="toc-number">1.2.</span> <span class="toc-text">二分插入排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#希尔排序"><span class="toc-number">1.3.</span> <span class="toc-text">希尔排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#选择排序"><span class="toc-number">1.4.</span> <span class="toc-text">选择排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#冒泡排序"><span class="toc-number">1.5.</span> <span class="toc-text">冒泡排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#快排"><span class="toc-number">1.6.</span> <span class="toc-text">快排</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/01/08/Sort/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/01/08/Sort/&text=JavaScript版各大排序算法"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/01/08/Sort/&title=JavaScript版各大排序算法"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/01/08/Sort/&is_video=false&description=JavaScript版各大排序算法"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=JavaScript版各大排序算法&body=Check out this article: http://yoursite.com/2020/01/08/Sort/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/01/08/Sort/&title=JavaScript版各大排序算法"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/01/08/Sort/&title=JavaScript版各大排序算法"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/01/08/Sort/&title=JavaScript版各大排序算法"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/01/08/Sort/&title=JavaScript版各大排序算法"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/01/08/Sort/&name=JavaScript版各大排序算法&description=&lt;h1 id=&#34;排序算法的设计与实现&#34;&gt;&lt;a href=&#34;#排序算法的设计与实现&#34; class=&#34;headerlink&#34; title=&#34;排序算法的设计与实现&#34;&gt;&lt;/a&gt;排序算法的设计与实现&lt;/h1&gt;&lt;p&gt;这是一个&lt;a href=&#34;https://songjinzhong.github.io/BaiDu_IFE/stage2/task19/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;可视化的排序展示&lt;/a&gt;,支持冒泡、插入和选择排序，具体使用先 随机添加40个，然后点排序，就可以看到可视化的效果。&lt;br&gt;推荐一下，&lt;a href=&#34;http://math.hws.edu/eck/jsdemo/sortlab.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;HTML5 Canvas Demo:Sorting Algorithms&lt;/a&gt;,这里还有个可视化的&lt;a href=&#34;https://coolshell.cn/articles/3933.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;排序博客&lt;/a&gt;，各大排序算法的实现都栩栩如生。&lt;/p&gt;
+&lt;p&gt;JavaScript写排序算法主要是参数问题，比如JavaScript算法函数可以扔给Array原型：&lt;code&gt;Array.prototype.sort = function&lt;/code&gt;，也可以直接写个函数带参数：&lt;code&gt;function sort(array) {}&lt;/code&gt;，哪种方法都一样，需要注意的是兼容性问题，如果可以考虑所有可遍历对象都能排序（比如argument），才大法好！&lt;br&gt;下面的排序都是从小到大的排序：&lt;/p&gt;
+&lt;h2 id=&#34;插入排序&#34;&gt;&lt;a href=&#34;#插入排序&#34; class=&#34;headerlink&#34; title=&#34;插入排序&#34;&gt;&lt;/a&gt;插入排序&lt;/h2&gt;&lt;p&gt;插入排序是一种基本排序，它的基本思路是构建有序序列，对于未排序的数据，在已排序的基础上，从右向左（或者二分查找）选择位置插入。&lt;/p&gt;
+&lt;figure class=&#34;highlight js&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;function&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;insert_sort&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;input&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; i, j, temp;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;keyword&#34;&gt;for&lt;/span&gt;(i = &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;; i &amp;lt; input.length; i++)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    temp = input[i];&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;for&lt;/span&gt;(j = i&lt;span class=&#34;number&#34;&gt;-1&lt;/span&gt;; j &amp;gt;= &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt; &amp;amp;&amp;amp; input[j] &amp;gt; temp; j--) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;      input[j+&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;] = input[j];&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    input[j+&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;] = temp;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; input;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;如果以比较次数和移动次数来衡量算法的效率，最好的情况下，比较n-1次，移动0次，最坏情况，比较n&lt;em&gt;(n-1)/2次，移动n&lt;/em&gt;(n-1)/2次。&lt;/p&gt;
+&lt;h2 id=&#34;二分插入排序&#34;&gt;&lt;a href=&#34;#二分插入排序&#34; class=&#34;headerlink&#34; title=&#34;二分插入排序&#34;&gt;&lt;/a&gt;二分插入排序&lt;/h2&gt;&lt;p&gt;思路基本与插入算法相同，只是在查找插入位置的时候，不是依次查找，而是采用二分法：&lt;/p&gt;
+&lt;figure class=&#34;highlight js&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;function&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;bin_insert_sort&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;input&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; i, j, low, mid, high, temp;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;keyword&#34;&gt;for&lt;/span&gt;(i = &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;; i &amp;lt; input.length; i++) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    temp = input[i];&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    high = i - &lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    low = &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;while&lt;/span&gt;(low &amp;lt;= high) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;      min = &lt;span class=&#34;built_in&#34;&gt;parseInt&lt;/span&gt;((low + high)/&lt;span class=&#34;number&#34;&gt;2&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;      &lt;span class=&#34;keyword&#34;&gt;if&lt;/span&gt;(temp &amp;lt; input[mid]) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        high = mid - &lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;      &amp;#125;&lt;span class=&#34;keyword&#34;&gt;else&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        low = mid + &lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;      &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;comment&#34;&gt;// low的位置就是要插入的位置&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;for&lt;/span&gt;(j = i - &lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;; j &amp;gt;= low; j--) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;      input[j+&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;] = input[j]&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    input[low] = temp;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; input;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2020/01/08/Sort/&t=JavaScript版各大排序算法"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2021
+    Rainy
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
