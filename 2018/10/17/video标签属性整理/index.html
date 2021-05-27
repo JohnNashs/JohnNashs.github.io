@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <meta name="description" content="视频内联播放在微信浏览器下有效，其他未知 123456&amp;lt;video     preload=&quot;none&quot;     x5-video-player-type=&quot;h5-page&quot;     playsinline=&quot;playsinline&quot;     webkit-playsinline=&quot;true&quot;&amp;gt;&amp;lt;/video&amp;gt;  这该死的文档还天天换地址！！！！！打开是404的话进首页找吧">
+<meta name="keywords" content="HTML">
+<meta property="og:type" content="article">
+<meta property="og:title" content="video标签属性整理">
+<meta property="og:url" content="http://yoursite.com/2018/10/17/video标签属性整理/index.html">
+<meta property="og:site_name" content="Rainy&#39;s Blog">
+<meta property="og:description" content="视频内联播放在微信浏览器下有效，其他未知 123456&amp;lt;video     preload=&quot;none&quot;     x5-video-player-type=&quot;h5-page&quot;     playsinline=&quot;playsinline&quot;     webkit-playsinline=&quot;true&quot;&amp;gt;&amp;lt;/video&amp;gt;  这该死的文档还天天换地址！！！！！打开是404的话进首页找吧">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2021-05-27T06:50:05.370Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="video标签属性整理">
+<meta name="twitter:description" content="视频内联播放在微信浏览器下有效，其他未知 123456&amp;lt;video     preload=&quot;none&quot;     x5-video-player-type=&quot;h5-page&quot;     playsinline=&quot;playsinline&quot;     webkit-playsinline=&quot;true&quot;&amp;gt;&amp;lt;/video&amp;gt;  这该死的文档还天天换地址！！！！！打开是404的话进首页找吧">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>video标签属性整理</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post " href="/2019/01/16/常规object对象判断是否为空方法汇总/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/10/17/video标签属性整理/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/10/17/video标签属性整理/&text=video标签属性整理"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/10/17/video标签属性整理/&title=video标签属性整理"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/10/17/video标签属性整理/&is_video=false&description=video标签属性整理"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=video标签属性整理&body=Check out this article: http://yoursite.com/2018/10/17/video标签属性整理/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/10/17/video标签属性整理/&title=video标签属性整理"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/10/17/video标签属性整理/&title=video标签属性整理"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/10/17/video标签属性整理/&title=video标签属性整理"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/10/17/video标签属性整理/&title=video标签属性整理"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/10/17/video标签属性整理/&name=video标签属性整理&description=&lt;h2 id=&#34;视频内联播放&#34;&gt;&lt;a href=&#34;#视频内联播放&#34; class=&#34;headerlink&#34; title=&#34;视频内联播放&#34;&gt;&lt;/a&gt;视频内联播放&lt;/h2&gt;&lt;p&gt;在微信浏览器下有效，其他未知&lt;/p&gt;
+&lt;figure class=&#34;highlight html&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;&amp;lt;&lt;span class=&#34;name&#34;&gt;video&lt;/span&gt; &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;    &lt;span class=&#34;attr&#34;&gt;preload&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&#34;none&#34;&lt;/span&gt; &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;    &lt;span class=&#34;attr&#34;&gt;x5-video-player-type&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&#34;h5-page&#34;&lt;/span&gt; &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;    &lt;span class=&#34;attr&#34;&gt;playsinline&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&#34;playsinline&#34;&lt;/span&gt; &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;    &lt;span class=&#34;attr&#34;&gt;webkit-playsinline&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&#34;true&#34;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;tag&#34;&gt;&amp;lt;/&lt;span class=&#34;name&#34;&gt;video&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;这该死的文档还天天换地址！！！！！打开是404的话进&lt;a href=&#34;https://x5.tencent.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;首页&lt;/a&gt;找吧；&lt;a href=&#34;https://x5.tencent.com/docs/video.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;TBS腾讯浏览服务文档&lt;/a&gt;&lt;br&gt;&lt;a href=&#34;https://blog.csdn.net/joyce_lcy/article/details/81391142&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;这文章还可以：H5的视频解决方案(1) —— mobile video内联播放&lt;/a&gt;&lt;br&gt;&lt;a href=&#34;https://segmentfault.com/a/1190000008782550&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;这篇也不错：神经病啊！——微信同层播放器接(踩)入(坑)总结&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;标签属性&#34;&gt;&lt;a href=&#34;#标签属性&#34; class=&#34;headerlink&#34; title=&#34;标签属性&#34;&gt;&lt;/a&gt;标签属性&lt;/h2&gt;&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;autoplay    autoplay    如果出现该属性，则视频在就绪后马上播放。&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;controls    controls    如果出现该属性，则向用户显示控件，比如播放按钮。&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;height      pixels      设置视频播放器的高度。&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;width       pixels      设置视频播放器的宽度。&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;loop        loop        如果出现该属性，则循环播放。&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;muted       muted       如果出现该属性，视频的音频输出为静音。&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;poster      URL         规定视频正在下载时显示的图像，直到用户点击播放按钮。 preload     auto/metadata/none   如果出现该属性，则视频在页面加载时进行加载，并预备播放。如果使用 &amp;quot;autoplay&amp;quot;，则忽略该属性。&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;src         URL         要播放的视频的 URL。&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&#34;只读属性&#34;&gt;&lt;a href=&#34;#只读属性&#34; class=&#34;headerlink&#34; title=&#34;只读属性&#34;&gt;&lt;/a&gt;只读属性&lt;/h2&gt;&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;duration   整个媒体文件的播放时长，以秒为单位。如果无法获取时长，则返回NaN  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;paused     如果媒体文件当前被暂停，则返回true。如果还未开始播放，默认返回true  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;ended      如果媒体文件已经播放完毕，则返回true  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;startTime  返回最早的播放起始时间，一般是0.0，除非是缓冲过的媒体文件，并且一部分内容已经不在缓冲区  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;error      在发生了错误的情况下返回的错误代码  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;currentSrc 以字符串形式返回当前正在播放或已加载的文件。对应于浏览器在source元素中选择的文件&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;seeking    如果播放器正在跳到一个新的播放点，那seeking的值为true。&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;initialTime  指定了媒体的开始时间，单位为秒&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&#34;可读写属性&#34;&gt;&lt;a href=&#34;#可读写属性&#34; class=&#34;headerlink&#34; title=&#34;可读写属性&#34;&gt;&lt;/a&gt;可读写属性&lt;/h2&gt;&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;autoplay     将媒体文件设置为创建后自动播放，或者查询是否已设置为autoplay  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;loop         返回是否循环播放，或设置循环播放（或者不循环播放）  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;currentTime  指定了播放器应该跳过播放的时间（单位为秒）。在播放过程中，可设置currentTime属性来进行定点播放。&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;controls     显示或隐藏用户控制界面，或者查询用户控制界面当前是否可见  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;volume       在0.0到1.0之间设置音频音量的相对值，或者查询当前音量相对值  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;muted        布尔值，设置静音或者消除静音，或者检测当前是否为静音  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;autobuffer   通知播放器在媒体文件开始播放前，是否惊醒缓冲加载。如果已设置为autoplay，则忽略此特性&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;playbackRate  用于指定媒体播放的速度。1.0表示正常速度，大于1则表示“快进”，0~1之间表示“慢放”，负值表示回放。&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2018/10/17/video标签属性整理/&t=video标签属性整理"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#视频内联播放"><span class="toc-number">1.</span> <span class="toc-text">视频内联播放</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#标签属性"><span class="toc-number">2.</span> <span class="toc-text">标签属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#只读属性"><span class="toc-number">3.</span> <span class="toc-text">只读属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可读写属性"><span class="toc-number">4.</span> <span class="toc-text">可读写属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三个特殊属性"><span class="toc-number">5.</span> <span class="toc-text">三个特殊属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事件"><span class="toc-number">6.</span> <span class="toc-text">事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#html5–移动端视频video的android兼容，去除播放控件、全屏等"><span class="toc-number">7.</span> <span class="toc-text">html5–移动端视频video的android兼容，去除播放控件、全屏等</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        video标签属性整理
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Rainy</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2018-10-16T16:00:00.000Z" itemprop="datePublished">2018-10-17</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/HTML相关/">HTML相关</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/HTML/">HTML</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="视频内联播放"><a href="#视频内联播放" class="headerlink" title="视频内联播放"></a>视频内联播放</h2><p>在微信浏览器下有效，其他未知</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">video</span> </span></span><br><span class="line"><span class="tag">    <span class="attr">preload</span>=<span class="string">"none"</span> </span></span><br><span class="line"><span class="tag">    <span class="attr">x5-video-player-type</span>=<span class="string">"h5-page"</span> </span></span><br><span class="line"><span class="tag">    <span class="attr">playsinline</span>=<span class="string">"playsinline"</span> </span></span><br><span class="line"><span class="tag">    <span class="attr">webkit-playsinline</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">&gt;</span><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这该死的文档还天天换地址！！！！！打开是404的话进<a href="https://x5.tencent.com" target="_blank" rel="noopener">首页</a>找吧；<a href="https://x5.tencent.com/docs/video.html" target="_blank" rel="noopener">TBS腾讯浏览服务文档</a><br><a href="https://blog.csdn.net/joyce_lcy/article/details/81391142" target="_blank" rel="noopener">这文章还可以：H5的视频解决方案(1) —— mobile video内联播放</a><br><a href="https://segmentfault.com/a/1190000008782550" target="_blank" rel="noopener">这篇也不错：神经病啊！——微信同层播放器接(踩)入(坑)总结</a></p>
+<h2 id="标签属性"><a href="#标签属性" class="headerlink" title="标签属性"></a>标签属性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">autoplay    autoplay    如果出现该属性，则视频在就绪后马上播放。</span><br><span class="line"></span><br><span class="line">controls    controls    如果出现该属性，则向用户显示控件，比如播放按钮。</span><br><span class="line"></span><br><span class="line">height      pixels      设置视频播放器的高度。</span><br><span class="line"></span><br><span class="line">width       pixels      设置视频播放器的宽度。</span><br><span class="line"></span><br><span class="line">loop        loop        如果出现该属性，则循环播放。</span><br><span class="line"></span><br><span class="line">muted       muted       如果出现该属性，视频的音频输出为静音。</span><br><span class="line"></span><br><span class="line">poster      URL         规定视频正在下载时显示的图像，直到用户点击播放按钮。 preload     auto/metadata/none   如果出现该属性，则视频在页面加载时进行加载，并预备播放。如果使用 &quot;autoplay&quot;，则忽略该属性。</span><br><span class="line"></span><br><span class="line">src         URL         要播放的视频的 URL。</span><br></pre></td></tr></table></figure>
+
+<h2 id="只读属性"><a href="#只读属性" class="headerlink" title="只读属性"></a>只读属性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">duration   整个媒体文件的播放时长，以秒为单位。如果无法获取时长，则返回NaN  </span><br><span class="line"></span><br><span class="line">paused     如果媒体文件当前被暂停，则返回true。如果还未开始播放，默认返回true  </span><br><span class="line"></span><br><span class="line">ended      如果媒体文件已经播放完毕，则返回true  </span><br><span class="line"></span><br><span class="line">startTime  返回最早的播放起始时间，一般是0.0，除非是缓冲过的媒体文件，并且一部分内容已经不在缓冲区  </span><br><span class="line"></span><br><span class="line">error      在发生了错误的情况下返回的错误代码  </span><br><span class="line"></span><br><span class="line">currentSrc 以字符串形式返回当前正在播放或已加载的文件。对应于浏览器在source元素中选择的文件</span><br><span class="line"></span><br><span class="line">seeking    如果播放器正在跳到一个新的播放点，那seeking的值为true。</span><br><span class="line"></span><br><span class="line">initialTime  指定了媒体的开始时间，单位为秒</span><br></pre></td></tr></table></figure>
+
+<h2 id="可读写属性"><a href="#可读写属性" class="headerlink" title="可读写属性"></a>可读写属性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">autoplay     将媒体文件设置为创建后自动播放，或者查询是否已设置为autoplay  </span><br><span class="line"></span><br><span class="line">loop         返回是否循环播放，或设置循环播放（或者不循环播放）  </span><br><span class="line"></span><br><span class="line">currentTime  指定了播放器应该跳过播放的时间（单位为秒）。在播放过程中，可设置currentTime属性来进行定点播放。</span><br><span class="line"></span><br><span class="line">controls     显示或隐藏用户控制界面，或者查询用户控制界面当前是否可见  </span><br><span class="line"></span><br><span class="line">volume       在0.0到1.0之间设置音频音量的相对值，或者查询当前音量相对值  </span><br><span class="line"></span><br><span class="line">muted        布尔值，设置静音或者消除静音，或者检测当前是否为静音  </span><br><span class="line"></span><br><span class="line">autobuffer   通知播放器在媒体文件开始播放前，是否惊醒缓冲加载。如果已设置为autoplay，则忽略此特性</span><br><span class="line"></span><br><span class="line">playbackRate  用于指定媒体播放的速度。1.0表示正常速度，大于1则表示“快进”，0~1之间表示“慢放”，负值表示回放。</span><br></pre></td></tr></table></figure>
+
+<h2 id="三个特殊属性"><a href="#三个特殊属性" class="headerlink" title="三个特殊属性"></a>三个特殊属性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">played 返回已经播放的时间段  </span><br><span class="line"></span><br><span class="line">buffered 返回当前已经缓冲的时间段  </span><br><span class="line"></span><br><span class="line">seekable 返回当前播放器需要跳到的时间段</span><br></pre></td></tr></table></figure>
+
+<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">loadstart：开始加载音频和视频。  </span><br><span class="line"></span><br><span class="line">durationchange：音频和视频的duration属性（时长）发生变化时触发，即已经知道媒体文件的长度。如果没有指定音频和视频文件，duration属性等于NaN。如果播放流媒体文件，没有明确的结束时间，duration属性等于Inf（Infinity）。  </span><br><span class="line"></span><br><span class="line">loadedmetadata：媒体文件的元数据加载完毕时触发，元数据包括duration（时长）、dimensions（大小，视频独有）和文字轨。  </span><br><span class="line"></span><br><span class="line">loadeddata：媒体文件的第一帧加载完毕时触发，此时整个文件还没有加载完。  </span><br><span class="line"></span><br><span class="line">progress：浏览器正在下载媒体文件，周期性触发。下载信息保存在元素的buffered属性中。  </span><br><span class="line"></span><br><span class="line">canplay：浏览器准备好播放，即使只有几帧，readyState属性变为CAN_PLAY。  </span><br><span class="line"></span><br><span class="line">canplaythrough：浏览器认为可以不缓冲（buffering）播放时触发，即当前下载速度保持不低于播放速度，readyState属性变为CAN_PLAY_THROUGH。</span><br><span class="line"></span><br><span class="line">abort	播放中断  </span><br><span class="line"></span><br><span class="line">emptied	媒体文件加载后又被清空，比如加载后又调用load方法重新加载。  </span><br><span class="line"></span><br><span class="line">ended	播放结束  </span><br><span class="line"></span><br><span class="line">error	发生错误。该元素的error属性包含更多信息。  </span><br><span class="line"></span><br><span class="line">pause	播放暂停  </span><br><span class="line"></span><br><span class="line">play	暂停后重新开始播放  </span><br><span class="line"></span><br><span class="line">playing	开始播放，包括第一次播放、暂停后播放、结束后重新播放。  </span><br><span class="line"></span><br><span class="line">ratechange	播放速率改变  </span><br><span class="line"></span><br><span class="line">seeked	搜索操作结束  </span><br><span class="line"></span><br><span class="line">seeking	搜索操作开始  </span><br><span class="line"></span><br><span class="line">stalled	浏览器开始尝试读取媒体文件，但是没有如预期那样获取数据  </span><br><span class="line"></span><br><span class="line">suspend	加载文件停止，有可能是播放结束，也有可能是其他原因的暂停  </span><br><span class="line"></span><br><span class="line">timeupdate	网页元素的currentTime属性改变时触发。  </span><br><span class="line"></span><br><span class="line">volumechange	音量改变时触发（包括静音）。  </span><br><span class="line"></span><br><span class="line">waiting	由于另一个操作（比如搜索）还没有结束，导致当前操作（比如播放）不得不等待。</span><br></pre></td></tr></table></figure>
+
+<h2 id="html5–移动端视频video的android兼容，去除播放控件、全屏等"><a href="#html5–移动端视频video的android兼容，去除播放控件、全屏等" class="headerlink" title="html5–移动端视频video的android兼容，去除播放控件、全屏等"></a>html5–移动端视频video的android兼容，去除播放控件、全屏等</h2><p><a href="https://segmentfault.com/a/1190000006857675" target="_blank" rel="noopener">查看相关文章</a></p>
+
+  </div>
+</article>
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+    <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+    <div id="gitalk-container"></div>
+    <script type="text/javascript">
+        var gitalk = new Gitalk({
+            clientID: '8623a327087e28567089',
+            clientSecret: '5a045261e738b0e7c0e39f8749e75d68abf56d21',
+            id: md5(window.location.pathname),
+            repo: 'johnnashs.github.io',
+            owner: 'johnnashs',
+            admin: 'Rainy',
+            distractionFreeMode: ''
+        })
+        gitalk.render('gitalk-container')
+    </script>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#视频内联播放"><span class="toc-number">1.</span> <span class="toc-text">视频内联播放</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#标签属性"><span class="toc-number">2.</span> <span class="toc-text">标签属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#只读属性"><span class="toc-number">3.</span> <span class="toc-text">只读属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可读写属性"><span class="toc-number">4.</span> <span class="toc-text">可读写属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三个特殊属性"><span class="toc-number">5.</span> <span class="toc-text">三个特殊属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事件"><span class="toc-number">6.</span> <span class="toc-text">事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#html5–移动端视频video的android兼容，去除播放控件、全屏等"><span class="toc-number">7.</span> <span class="toc-text">html5–移动端视频video的android兼容，去除播放控件、全屏等</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/10/17/video标签属性整理/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/10/17/video标签属性整理/&text=video标签属性整理"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/10/17/video标签属性整理/&title=video标签属性整理"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/10/17/video标签属性整理/&is_video=false&description=video标签属性整理"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=video标签属性整理&body=Check out this article: http://yoursite.com/2018/10/17/video标签属性整理/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/10/17/video标签属性整理/&title=video标签属性整理"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/10/17/video标签属性整理/&title=video标签属性整理"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/10/17/video标签属性整理/&title=video标签属性整理"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/10/17/video标签属性整理/&title=video标签属性整理"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/10/17/video标签属性整理/&name=video标签属性整理&description=&lt;h2 id=&#34;视频内联播放&#34;&gt;&lt;a href=&#34;#视频内联播放&#34; class=&#34;headerlink&#34; title=&#34;视频内联播放&#34;&gt;&lt;/a&gt;视频内联播放&lt;/h2&gt;&lt;p&gt;在微信浏览器下有效，其他未知&lt;/p&gt;
+&lt;figure class=&#34;highlight html&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;&amp;lt;&lt;span class=&#34;name&#34;&gt;video&lt;/span&gt; &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;    &lt;span class=&#34;attr&#34;&gt;preload&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&#34;none&#34;&lt;/span&gt; &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;    &lt;span class=&#34;attr&#34;&gt;x5-video-player-type&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&#34;h5-page&#34;&lt;/span&gt; &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;    &lt;span class=&#34;attr&#34;&gt;playsinline&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&#34;playsinline&#34;&lt;/span&gt; &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;    &lt;span class=&#34;attr&#34;&gt;webkit-playsinline&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&#34;true&#34;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;tag&#34;&gt;&amp;lt;/&lt;span class=&#34;name&#34;&gt;video&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;这该死的文档还天天换地址！！！！！打开是404的话进&lt;a href=&#34;https://x5.tencent.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;首页&lt;/a&gt;找吧；&lt;a href=&#34;https://x5.tencent.com/docs/video.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;TBS腾讯浏览服务文档&lt;/a&gt;&lt;br&gt;&lt;a href=&#34;https://blog.csdn.net/joyce_lcy/article/details/81391142&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;这文章还可以：H5的视频解决方案(1) —— mobile video内联播放&lt;/a&gt;&lt;br&gt;&lt;a href=&#34;https://segmentfault.com/a/1190000008782550&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;这篇也不错：神经病啊！——微信同层播放器接(踩)入(坑)总结&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;标签属性&#34;&gt;&lt;a href=&#34;#标签属性&#34; class=&#34;headerlink&#34; title=&#34;标签属性&#34;&gt;&lt;/a&gt;标签属性&lt;/h2&gt;&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;autoplay    autoplay    如果出现该属性，则视频在就绪后马上播放。&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;controls    controls    如果出现该属性，则向用户显示控件，比如播放按钮。&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;height      pixels      设置视频播放器的高度。&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;width       pixels      设置视频播放器的宽度。&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;loop        loop        如果出现该属性，则循环播放。&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;muted       muted       如果出现该属性，视频的音频输出为静音。&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;poster      URL         规定视频正在下载时显示的图像，直到用户点击播放按钮。 preload     auto/metadata/none   如果出现该属性，则视频在页面加载时进行加载，并预备播放。如果使用 &amp;quot;autoplay&amp;quot;，则忽略该属性。&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;src         URL         要播放的视频的 URL。&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&#34;只读属性&#34;&gt;&lt;a href=&#34;#只读属性&#34; class=&#34;headerlink&#34; title=&#34;只读属性&#34;&gt;&lt;/a&gt;只读属性&lt;/h2&gt;&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;duration   整个媒体文件的播放时长，以秒为单位。如果无法获取时长，则返回NaN  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;paused     如果媒体文件当前被暂停，则返回true。如果还未开始播放，默认返回true  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;ended      如果媒体文件已经播放完毕，则返回true  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;startTime  返回最早的播放起始时间，一般是0.0，除非是缓冲过的媒体文件，并且一部分内容已经不在缓冲区  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;error      在发生了错误的情况下返回的错误代码  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;currentSrc 以字符串形式返回当前正在播放或已加载的文件。对应于浏览器在source元素中选择的文件&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;seeking    如果播放器正在跳到一个新的播放点，那seeking的值为true。&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;initialTime  指定了媒体的开始时间，单位为秒&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&#34;可读写属性&#34;&gt;&lt;a href=&#34;#可读写属性&#34; class=&#34;headerlink&#34; title=&#34;可读写属性&#34;&gt;&lt;/a&gt;可读写属性&lt;/h2&gt;&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;autoplay     将媒体文件设置为创建后自动播放，或者查询是否已设置为autoplay  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;loop         返回是否循环播放，或设置循环播放（或者不循环播放）  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;currentTime  指定了播放器应该跳过播放的时间（单位为秒）。在播放过程中，可设置currentTime属性来进行定点播放。&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;controls     显示或隐藏用户控制界面，或者查询用户控制界面当前是否可见  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;volume       在0.0到1.0之间设置音频音量的相对值，或者查询当前音量相对值  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;muted        布尔值，设置静音或者消除静音，或者检测当前是否为静音  &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;autobuffer   通知播放器在媒体文件开始播放前，是否惊醒缓冲加载。如果已设置为autoplay，则忽略此特性&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;playbackRate  用于指定媒体播放的速度。1.0表示正常速度，大于1则表示“快进”，0~1之间表示“慢放”，负值表示回放。&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2018/10/17/video标签属性整理/&t=video标签属性整理"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2021
+    Rainy
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

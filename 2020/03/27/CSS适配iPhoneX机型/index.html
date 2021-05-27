@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <meta name="description" content="第一步：设置网页在可视窗口的布局方式新增 viweport-fit 属性，使得页面内容完全覆盖整个窗口： 1&amp;lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cove">
+<meta name="keywords" content="CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS适配iPhoneX机型">
+<meta property="og:url" content="http://yoursite.com/2020/03/27/CSS适配iPhoneX机型/index.html">
+<meta property="og:site_name" content="Rainy&#39;s Blog">
+<meta property="og:description" content="第一步：设置网页在可视窗口的布局方式新增 viweport-fit 属性，使得页面内容完全覆盖整个窗口： 1&amp;lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cove">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2021-05-27T06:47:07.627Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS适配iPhoneX机型">
+<meta name="twitter:description" content="第一步：设置网页在可视窗口的布局方式新增 viweport-fit 属性，使得页面内容完全覆盖整个窗口： 1&amp;lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cove">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>CSS适配iPhoneX机型</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post " href="/2020/10/27/PxToRem&Autoprefixer/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post " href="/2020/01/08/Sort/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/03/27/CSS适配iPhoneX机型/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/03/27/CSS适配iPhoneX机型/&text=CSS适配iPhoneX机型"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/03/27/CSS适配iPhoneX机型/&title=CSS适配iPhoneX机型"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/03/27/CSS适配iPhoneX机型/&is_video=false&description=CSS适配iPhoneX机型"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=CSS适配iPhoneX机型&body=Check out this article: http://yoursite.com/2020/03/27/CSS适配iPhoneX机型/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/03/27/CSS适配iPhoneX机型/&title=CSS适配iPhoneX机型"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/03/27/CSS适配iPhoneX机型/&title=CSS适配iPhoneX机型"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/03/27/CSS适配iPhoneX机型/&title=CSS适配iPhoneX机型"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/03/27/CSS适配iPhoneX机型/&title=CSS适配iPhoneX机型"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/03/27/CSS适配iPhoneX机型/&name=CSS适配iPhoneX机型&description=&lt;h3 id=&#34;第一步：设置网页在可视窗口的布局方式&#34;&gt;&lt;a href=&#34;#第一步：设置网页在可视窗口的布局方式&#34; class=&#34;headerlink&#34; title=&#34;第一步：设置网页在可视窗口的布局方式&#34;&gt;&lt;/a&gt;第一步：设置网页在可视窗口的布局方式&lt;/h3&gt;&lt;p&gt;新增 viweport-fit 属性，使得页面内容完全覆盖整个窗口：&lt;/p&gt;
+&lt;figure class=&#34;highlight html&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;&amp;lt;&lt;span class=&#34;name&#34;&gt;meta&lt;/span&gt; &lt;span class=&#34;attr&#34;&gt;name&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&#34;viewport&#34;&lt;/span&gt; &lt;span class=&#34;attr&#34;&gt;content&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&#34;width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover&#34;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&#34;第二步：页面主体内容限定在安全区域内&#34;&gt;&lt;a href=&#34;#第二步：页面主体内容限定在安全区域内&#34; class=&#34;headerlink&#34; title=&#34;第二步：页面主体内容限定在安全区域内&#34;&gt;&lt;/a&gt;第二步：页面主体内容限定在安全区域内&lt;/h3&gt;&lt;figure class=&#34;highlight css&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;selector-tag&#34;&gt;body&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;attribute&#34;&gt;padding-bottom&lt;/span&gt;: &lt;span class=&#34;built_in&#34;&gt;constant&lt;/span&gt;(safe-area-inset-bottom);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;attribute&#34;&gt;padding-bottom&lt;/span&gt;: &lt;span class=&#34;built_in&#34;&gt;env&lt;/span&gt;(safe-area-inset-bottom);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&#34;第三步：fixed-元素的适配&#34;&gt;&lt;a href=&#34;#第三步：fixed-元素的适配&#34; class=&#34;headerlink&#34; title=&#34;第三步：fixed 元素的适配&#34;&gt;&lt;/a&gt;第三步：fixed 元素的适配&lt;/h3&gt;&lt;h4 id=&#34;类型一：fixed-完全吸底元素（bottom-0）&#34;&gt;&lt;a href=&#34;#类型一：fixed-完全吸底元素（bottom-0）&#34; class=&#34;headerlink&#34; title=&#34;类型一：fixed 完全吸底元素（bottom = 0）&#34;&gt;&lt;/a&gt;类型一：fixed 完全吸底元素（bottom = 0）&lt;/h4&gt;&lt;figure class=&#34;highlight css&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;attribute&#34;&gt;padding-bottom&lt;/span&gt;: &lt;span class=&#34;built_in&#34;&gt;constant&lt;/span&gt;(safe-area-inset-bottom);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;attribute&#34;&gt;padding-bottom&lt;/span&gt;: &lt;span class=&#34;built_in&#34;&gt;env&lt;/span&gt;(safe-area-inset-bottom);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;或者 &lt;/p&gt;
+&lt;figure class=&#34;highlight css&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;attribute&#34;&gt;height&lt;/span&gt;: &lt;span class=&#34;built_in&#34;&gt;calc&lt;/span&gt;(60px(假设值) + &lt;span class=&#34;built_in&#34;&gt;constant&lt;/span&gt;(safe-area-inset-bottom));&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;attribute&#34;&gt;height&lt;/span&gt;: &lt;span class=&#34;built_in&#34;&gt;calc&lt;/span&gt;(60px(假设值) + &lt;span class=&#34;built_in&#34;&gt;env&lt;/span&gt;(safe-area-inset-bottom));&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2020/03/27/CSS适配iPhoneX机型/&t=CSS适配iPhoneX机型"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一步：设置网页在可视窗口的布局方式"><span class="toc-number">1.</span> <span class="toc-text">第一步：设置网页在可视窗口的布局方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第二步：页面主体内容限定在安全区域内"><span class="toc-number">2.</span> <span class="toc-text">第二步：页面主体内容限定在安全区域内</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第三步：fixed-元素的适配"><span class="toc-number">3.</span> <span class="toc-text">第三步：fixed 元素的适配</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#类型一：fixed-完全吸底元素（bottom-0）"><span class="toc-number">3.1.</span> <span class="toc-text">类型一：fixed 完全吸底元素（bottom = 0）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#类型二：fixed-非完全吸底元素（bottom-≠-0），比如-“返回顶部”、“侧边广告”-等"><span class="toc-number">3.2.</span> <span class="toc-text">类型二：fixed 非完全吸底元素（bottom ≠ 0），比如 “返回顶部”、“侧边广告” 等</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        CSS适配iPhoneX机型
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Rainy</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-03-26T16:00:00.000Z" itemprop="datePublished">2020-03-27</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/CSS相关/">CSS相关</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/CSS/">CSS</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h3 id="第一步：设置网页在可视窗口的布局方式"><a href="#第一步：设置网页在可视窗口的布局方式" class="headerlink" title="第一步：设置网页在可视窗口的布局方式"></a>第一步：设置网页在可视窗口的布局方式</h3><p>新增 viweport-fit 属性，使得页面内容完全覆盖整个窗口：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="第二步：页面主体内容限定在安全区域内"><a href="#第二步：页面主体内容限定在安全区域内" class="headerlink" title="第二步：页面主体内容限定在安全区域内"></a>第二步：页面主体内容限定在安全区域内</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">padding-bottom</span>: <span class="built_in">constant</span>(safe-area-inset-bottom);</span><br><span class="line">  <span class="attribute">padding-bottom</span>: <span class="built_in">env</span>(safe-area-inset-bottom);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="第三步：fixed-元素的适配"><a href="#第三步：fixed-元素的适配" class="headerlink" title="第三步：fixed 元素的适配"></a>第三步：fixed 元素的适配</h3><h4 id="类型一：fixed-完全吸底元素（bottom-0）"><a href="#类型一：fixed-完全吸底元素（bottom-0）" class="headerlink" title="类型一：fixed 完全吸底元素（bottom = 0）"></a>类型一：fixed 完全吸底元素（bottom = 0）</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attribute">padding-bottom</span>: <span class="built_in">constant</span>(safe-area-inset-bottom);</span><br><span class="line">  <span class="attribute">padding-bottom</span>: <span class="built_in">env</span>(safe-area-inset-bottom);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>或者 </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attribute">height</span>: <span class="built_in">calc</span>(60px(假设值) + <span class="built_in">constant</span>(safe-area-inset-bottom));</span><br><span class="line">  <span class="attribute">height</span>: <span class="built_in">calc</span>(60px(假设值) + <span class="built_in">env</span>(safe-area-inset-bottom));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意，这个方案需要吸底条必须是有背景色的，因为扩展的部分背景是跟随外容器的，否则出现镂空情况。</strong></p>
+<h4 id="类型二：fixed-非完全吸底元素（bottom-≠-0），比如-“返回顶部”、“侧边广告”-等"><a href="#类型二：fixed-非完全吸底元素（bottom-≠-0），比如-“返回顶部”、“侧边广告”-等" class="headerlink" title="类型二：fixed 非完全吸底元素（bottom ≠ 0），比如 “返回顶部”、“侧边广告” 等"></a>类型二：fixed 非完全吸底元素（bottom ≠ 0），比如 “返回顶部”、“侧边广告” 等</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attribute">bottom</span>: <span class="built_in">calc</span>(50px(假设值) + <span class="built_in">constant</span>(safe-area-inset-bottom));</span><br><span class="line">  <span class="attribute">bottom</span>: <span class="built_in">calc</span>(50px(假设值) + <span class="built_in">env</span>(safe-area-inset-bottom));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+  </div>
+</article>
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+    <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+    <div id="gitalk-container"></div>
+    <script type="text/javascript">
+        var gitalk = new Gitalk({
+            clientID: '8623a327087e28567089',
+            clientSecret: '5a045261e738b0e7c0e39f8749e75d68abf56d21',
+            id: md5(window.location.pathname),
+            repo: 'johnnashs.github.io',
+            owner: 'johnnashs',
+            admin: 'Rainy',
+            distractionFreeMode: ''
+        })
+        gitalk.render('gitalk-container')
+    </script>
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一步：设置网页在可视窗口的布局方式"><span class="toc-number">1.</span> <span class="toc-text">第一步：设置网页在可视窗口的布局方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第二步：页面主体内容限定在安全区域内"><span class="toc-number">2.</span> <span class="toc-text">第二步：页面主体内容限定在安全区域内</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第三步：fixed-元素的适配"><span class="toc-number">3.</span> <span class="toc-text">第三步：fixed 元素的适配</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#类型一：fixed-完全吸底元素（bottom-0）"><span class="toc-number">3.1.</span> <span class="toc-text">类型一：fixed 完全吸底元素（bottom = 0）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#类型二：fixed-非完全吸底元素（bottom-≠-0），比如-“返回顶部”、“侧边广告”-等"><span class="toc-number">3.2.</span> <span class="toc-text">类型二：fixed 非完全吸底元素（bottom ≠ 0），比如 “返回顶部”、“侧边广告” 等</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2020/03/27/CSS适配iPhoneX机型/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2020/03/27/CSS适配iPhoneX机型/&text=CSS适配iPhoneX机型"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2020/03/27/CSS适配iPhoneX机型/&title=CSS适配iPhoneX机型"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2020/03/27/CSS适配iPhoneX机型/&is_video=false&description=CSS适配iPhoneX机型"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=CSS适配iPhoneX机型&body=Check out this article: http://yoursite.com/2020/03/27/CSS适配iPhoneX机型/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2020/03/27/CSS适配iPhoneX机型/&title=CSS适配iPhoneX机型"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2020/03/27/CSS适配iPhoneX机型/&title=CSS适配iPhoneX机型"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2020/03/27/CSS适配iPhoneX机型/&title=CSS适配iPhoneX机型"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2020/03/27/CSS适配iPhoneX机型/&title=CSS适配iPhoneX机型"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2020/03/27/CSS适配iPhoneX机型/&name=CSS适配iPhoneX机型&description=&lt;h3 id=&#34;第一步：设置网页在可视窗口的布局方式&#34;&gt;&lt;a href=&#34;#第一步：设置网页在可视窗口的布局方式&#34; class=&#34;headerlink&#34; title=&#34;第一步：设置网页在可视窗口的布局方式&#34;&gt;&lt;/a&gt;第一步：设置网页在可视窗口的布局方式&lt;/h3&gt;&lt;p&gt;新增 viweport-fit 属性，使得页面内容完全覆盖整个窗口：&lt;/p&gt;
+&lt;figure class=&#34;highlight html&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;tag&#34;&gt;&amp;lt;&lt;span class=&#34;name&#34;&gt;meta&lt;/span&gt; &lt;span class=&#34;attr&#34;&gt;name&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&#34;viewport&#34;&lt;/span&gt; &lt;span class=&#34;attr&#34;&gt;content&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&#34;width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover&#34;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&#34;第二步：页面主体内容限定在安全区域内&#34;&gt;&lt;a href=&#34;#第二步：页面主体内容限定在安全区域内&#34; class=&#34;headerlink&#34; title=&#34;第二步：页面主体内容限定在安全区域内&#34;&gt;&lt;/a&gt;第二步：页面主体内容限定在安全区域内&lt;/h3&gt;&lt;figure class=&#34;highlight css&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;selector-tag&#34;&gt;body&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;attribute&#34;&gt;padding-bottom&lt;/span&gt;: &lt;span class=&#34;built_in&#34;&gt;constant&lt;/span&gt;(safe-area-inset-bottom);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;attribute&#34;&gt;padding-bottom&lt;/span&gt;: &lt;span class=&#34;built_in&#34;&gt;env&lt;/span&gt;(safe-area-inset-bottom);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&#34;第三步：fixed-元素的适配&#34;&gt;&lt;a href=&#34;#第三步：fixed-元素的适配&#34; class=&#34;headerlink&#34; title=&#34;第三步：fixed 元素的适配&#34;&gt;&lt;/a&gt;第三步：fixed 元素的适配&lt;/h3&gt;&lt;h4 id=&#34;类型一：fixed-完全吸底元素（bottom-0）&#34;&gt;&lt;a href=&#34;#类型一：fixed-完全吸底元素（bottom-0）&#34; class=&#34;headerlink&#34; title=&#34;类型一：fixed 完全吸底元素（bottom = 0）&#34;&gt;&lt;/a&gt;类型一：fixed 完全吸底元素（bottom = 0）&lt;/h4&gt;&lt;figure class=&#34;highlight css&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;attribute&#34;&gt;padding-bottom&lt;/span&gt;: &lt;span class=&#34;built_in&#34;&gt;constant&lt;/span&gt;(safe-area-inset-bottom);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;attribute&#34;&gt;padding-bottom&lt;/span&gt;: &lt;span class=&#34;built_in&#34;&gt;env&lt;/span&gt;(safe-area-inset-bottom);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;或者 &lt;/p&gt;
+&lt;figure class=&#34;highlight css&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;attribute&#34;&gt;height&lt;/span&gt;: &lt;span class=&#34;built_in&#34;&gt;calc&lt;/span&gt;(60px(假设值) + &lt;span class=&#34;built_in&#34;&gt;constant&lt;/span&gt;(safe-area-inset-bottom));&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &lt;span class=&#34;attribute&#34;&gt;height&lt;/span&gt;: &lt;span class=&#34;built_in&#34;&gt;calc&lt;/span&gt;(60px(假设值) + &lt;span class=&#34;built_in&#34;&gt;env&lt;/span&gt;(safe-area-inset-bottom));&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2020/03/27/CSS适配iPhoneX机型/&t=CSS适配iPhoneX机型"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2021
+    Rainy
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

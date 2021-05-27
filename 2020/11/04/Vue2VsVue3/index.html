@@ -7,13 +7,14 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
     <meta name="description" content="总结一下vue3.0带来的部分新特性  setup() ref() reactive() isRef() toRefs() computed() watch() LifeCycle Hooks(新的生命周期) Template refs globalProperties Suspense  vue2与vue3的对比 对TypeScript支持不友好（所有属性都放在了this对象上，难以推到组件的数">
+<meta name="keywords" content="Vue">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue3新特性">
 <meta property="og:url" content="http://yoursite.com/2020/11/04/Vue2VsVue3/index.html">
 <meta property="og:site_name" content="Rainy&#39;s Blog">
 <meta property="og:description" content="总结一下vue3.0带来的部分新特性  setup() ref() reactive() isRef() toRefs() computed() watch() LifeCycle Hooks(新的生命周期) Template refs globalProperties Suspense  vue2与vue3的对比 对TypeScript支持不友好（所有属性都放在了this对象上，难以推到组件的数">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-05-17T08:55:08.789Z">
+<meta property="og:updated_time" content="2021-05-27T06:50:14.484Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue3新特性">
 <meta name="twitter:description" content="总结一下vue3.0带来的部分新特性  setup() ref() reactive() isRef() toRefs() computed() watch() LifeCycle Hooks(新的生命周期) Template refs globalProperties Suspense  vue2与vue3的对比 对TypeScript支持不友好（所有属性都放在了this对象上，难以推到组件的数">
@@ -65,6 +66,8 @@
           <li><a href="/archives/">Writing</a></li>
          
           <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
          
           <li><a href="/search/">Search</a></li>
         
@@ -174,6 +177,11 @@
 
 
       
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/Vue/">Vue</a>
+    </div>
+
 
     </div>
   </header>
@@ -309,7 +317,7 @@
             id: md5(window.location.pathname),
             repo: 'johnnashs.github.io',
             owner: 'johnnashs',
-            admin: 'johnnashs',
+            admin: 'Rainy',
             distractionFreeMode: ''
         })
         gitalk.render('gitalk-container')
@@ -330,6 +338,8 @@
           <li><a href="/archives/">Writing</a></li>
          
           <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
          
           <li><a href="/search/">Search</a></li>
         
@@ -418,6 +428,8 @@
           <li><a href="/archives/">Writing</a></li>
          
           <li><a href="/categories/">Category</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
          
           <li><a href="/search/">Search</a></li>
         
