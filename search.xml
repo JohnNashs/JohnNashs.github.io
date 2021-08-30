@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>升级Git后，仓库无法push</title>
+      <link href="2021/08/30/git-updata-bug/"/>
+      <url>2021/08/30/git-updata-bug/</url>
+      
+        <content type="html"><![CDATA[<h1 id="升级-Git-后，仓库无法-push"><a href="#升级-Git-后，仓库无法-push" class="headerlink" title="升级 Git 后，仓库无法 push"></a>升级 Git 后，仓库无法 push</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">error: RPC failed; curl 92 HTTP/2 stream 0 was not closed cleanly: PROTOCOL_ERROR</span><br></pre></td></tr></table></figure><h2 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.version HTTP/1.1</span><br><span class="line">git push</span><br><span class="line">git config --global http.version HTTP/2</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Git相关 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Git </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Gulp与Node版本不兼容</title>
       <link href="2021/05/17/Gulp%E4%B8%8ENode%E7%89%88%E6%9C%AC%E4%B8%8D%E5%85%BC%E5%AE%B9/"/>
       <url>2021/05/17/Gulp%E4%B8%8ENode%E7%89%88%E6%9C%AC%E4%B8%8D%E5%85%BC%E5%AE%B9/</url>
